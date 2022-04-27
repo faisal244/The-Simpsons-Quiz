@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <!-- nav should be a flex container -->
+        <nav >
+            <!-- these links should be flex items -->
+            <!-- home link -->
+            <!-- high scores link = takes you to highscores.html, seperate page -->
+        </nav>
+
+
+    </header>
+
+    <main id="main">
+          <!-- first page stuff you need to initially build and render is below -->
+
+          <section id= "start-quiz-banner">
+        </section>  
+    
+        <div>
+            <!-- main quiz bits probably need to go here  -->
+        </div>
+
+        <button id="start-quiz-btn">
+            <!-- need a click event handler here - start quiz .  --> 
+
+        </button>
+
+        <!-- Second page content -->
+            <!-- need a click event listener for this section, when clicked  -->
+            <!-- once clicked to start quiz, you need the below bits to render -->
+            <section id="timer-section">
+                <div id="time-remaining">
+                    <!-- when the quiz is started, start the timer, this should all be done in javascript first. Hardcode the number to 60 to begin with, then append to main  -->
+                    <Span id="timer-span"> styling for the timer here</Span>
+                </div>
+            </section>
+
+            <section id="question-card">
+                <h2>question goes here</h2>
+                <ul>
+                    <li>answer 1</li>
+                    <li>answer 2</li>
+                    <li>answer 3</li>
+                    <li>answer 4</li>
+                </ul>
+            </section>
+
+            <div>render after the answer is selected in the quiz</div>
+            <!-- Create a function for this div called renderAlert, and then you can reuse this field for error messages on the high scores page - can set color to red or green boxes to show if content has validated or not -->
+       
+
+
+          <!-- third page content - high scores page - build seperately and link in the top nav -->
+            <section>
+                <form action="">
+                    <div>
+                        <input id="full-name">enter full name 
+                        <!-- need to validate here - if value is empty,  -->
+
+                    </div>
+
+                    <div>
+                        <button>SUBMIT</button>
+                        <!-- javascript function needed here - call it handleSubmit  -->
+
+                    </div>
+
+
+                </form>
+            </section>
+
+            <!-- option for a 4th page - remove high score once submitted, replace with a h1 and a h2 saying thank you for submitting -->
+            <h1>thank you for submitting</h1>
+            <h2>cowabunga dudes</h2>
+            <div><a href="index.html"></a></div>
+
+    </main>
+  
+    <script src="assets/js/index.js"></script>
+</body>
+</html>
