@@ -1,5 +1,300 @@
-* {
+:root {
+    --light-french-beige: #D1B271;
+    --light-french-beige-rgb: 209, 178, 113;
+    --metallic-yellow: #FED90F;
+    --metallic-yellow-rgb: 254, 217, 15;
+    --maya-blue: #70D1FE;
+    --maya-blue-rgb: 112, 209, 254; 
+    --ash-grey: #e2e2e2;
+    --ash-grey-rgb: 226, 226, 226;
 
+    --outer-space: #424F46;
+    --outer-space-rgb: 66, 79, 70;
+  }
+  
+
+
+
+* {
+    box-sizing: border-box;
     font-family: 'Homer Simpson Revised', sans-serif;
-};
+    /* either black or this midnight outer space for the text colour */
+    color: var(--outer-space);
+    
+}
+  
+  html {
+    font-size: 10px;
+    
+  }
+  
+  body {
+    margin: 0;
+    line-height: 2;
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Source Sans Pro", sans-serif;
+    /* background-color: var(--outer-space); */
+    background-color: var(--light-french-beige);
+
+  }
+  
+  /* start of header styles */
+  
+  .header {
+    background-color: var(--metallic-yellow);
+    
+  }
+  
+  .nav-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  
+  .nav-link-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-link-logo:hover {
+    box-shadow: 0 0 1rem 0.5rem var(--light-french-beige);
+    background-color: var(--light-french-beige);
+    /* text-decoration: none; */
+  }
+  
+  .logo-img {
+    width: 6.4rem;
+    height: 6.4rem;
+    object-fit: contain;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: var(--ash-grey);
+    padding-bottom: 0.5rem;
+    /* background-color: black; */
+
+  }
+  
+  .nav-link:hover {
+    border-bottom: 0.2rem solid var(--ash-grey);
+    box-shadow: 0 0 1rem 0.5rem var(--light-french-beige);
+    background-color: var(--light-french-beige);
+  }
+  
+  /* end of header styles */
+  
+  /* start of footer styles */
+  
+  .footer {
+    background-color: var(--metallic-yellow);
+    font-size: 1.4rem;
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--ash-grey);
+    letter-spacing: 0.4rem;
+  }
+  
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+  
+  .contact-link {
+    text-decoration: none;
+    color: var(--ash-grey);
+    margin: 0.5rem 0;
+  }
+  
+  .contact-link:hover {
+    border-bottom: 0.2rem solid var(--ash-grey);
+    box-shadow: 0 0 1rem 0.5rem var(--light-french-beige);
+    background-color: var(--light-french-beige);
+  }
+  
+  /* end of footer styles */
+  
+  .main {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 20rem;
+    /* position: relative; */
+  }
+  
+  /* content section styles */
+  
+  .content-section {
+    letter-spacing: 0.6rem;
+    padding: 2rem 1rem;
+    text-align: center;
+    color: var(--ash-grey);
+    box-shadow: 0rem 0rem 0.7rem 0.7rem rgba(var(--ash-grey-rgb), 0.3);
+    /* position: relative; */
+    background-image: linear-gradient(
+        to bottom,
+        rgba(var(--ash-grey-rgb), 0.7),
+        rgba(var(--ash-grey-rgb), 0.4)
+      ),
+      url("/images/egghead.jpg");
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    animation: animatedBackground 10s linear infinite alternate;
+    
+    
+  }
+  
+  .content-section-title {
+    font-size: 4rem;
+  }
+  
+  .content-section-info {
+    font-size: 2rem;
+  }
+  
+  /* end of content section styles */
+  
+  /* start of button styles */
+  
+  .btn-control {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .btn {
+    padding: 1.5rem 2rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.4rem;
+    min-width: 20rem;
+    text-transform: uppercase;
+    background-color: var(--metallic-yellow);
+    color: var(--outer-space);
+  }
+  
+  /* background outer space looks good on the button hover here */
+  .btn:hover {
+    cursor: pointer;
+    background-color: var(--light-french-beige);
+    box-shadow: 0.5rem 0.5rem 0.7rem rgba(var(--ash-grey-rgb), 0.3);
+  }
+  
+  /* end of button styles */
+  
+  /* start of question styles */
+  
+  .question-container {
+    padding: 0;
+    background: transparent;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(var(--ash-grey-rgb), 0.7),
+        rgba(var(--ash-grey-rgb), 0.4)
+      ),
+      url("/images/simpsonsclassic.jpg");
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    animation: animatedBackground 10s linear infinite alternate;
+  }
+  
+  .question-container .content-section-title {
+    background-color: rgba(var(--light-french-beige), 0.8);
+    /* color: var(--mid) */
+    
+  }
+  
+  .feedback-list {
+    list-style: none;
+    text-align: left;
+    margin: 3rem 2rem;
+    padding: 2rem;
+    border-radius: 0.4rem;
+    background-color: rgba(var(--metallic-yellow-rgb), 0.8);
+  }
+  
+  .list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1rem 0;
+    font-size: 1.8rem;
+  }
+  
+  .list-item:hover {
+    background-color: var(--maya-blue);
+    cursor: pointer;
+  }
+  
+  /* end of question styles */
+  
+  /* start of form section styles */
+  
+  .feedback-form-section {
+    background-color: var(--maya-blue);
+    margin: 2rem 0;
+  }
+  
+  .title {
+    text-align: center;
+    color: var(--ash-grey);
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+  }
+  
+  /* feedback form styles */
+  
+  .form-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .form-input {
+    padding: 1rem 2rem;
+    width: 100%;
+    border: none;
+    border-radius: 0.4rem;
+  }
+  
+  .form-input::placeholder {
+    font-size: 1.6rem;
+    letter-spacing: 0.4rem;
+  }
+  
+  /* end of form section styles */
+  
+  @media screen and (max-width: 768px) {
+    .main {
+      margin: 0 1rem;
+    }
+    .content-section {
+      margin: 2rem 0.75rem;
+    }
+  }
+  
+  @keyframes animatedBackground {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+
+
+
                                                 
