@@ -35,7 +35,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: "Source Sans Pro", sans-serif;
+    /* font-family: "Source Sans Pro", sans-serif; */
     /* background-color: var(--outer-space); */
     background-color: var(--light-french-beige);
 
@@ -130,6 +130,7 @@
       flex-direction: column;
       justify-content: center;
       margin: 0 20rem;
+      height: 50%;
       
       
     /* position: relative; */
@@ -203,7 +204,7 @@
   /* start of question styles */
   
   .question-container {
-      
+    height: auto;  
     padding: 0;
     background: transparent;
     background-image: linear-gradient(
@@ -222,13 +223,14 @@
   .question-container .content-section-title {
     background-color: rgba(var(--light-french-beige), 0.8);
     /* color: var(--mid) */
+    margin-top: 0;
     
   }
   
   .feedback-list {
     list-style: none;
     text-align: left;
-    margin: 3rem 2rem;
+    /* margin: 3rem 2rem; */
     padding: 2rem;
     border-radius: 0.4rem;
     background-color: rgba(var(--metallic-yellow-rgb), 0.8);
@@ -239,12 +241,39 @@
     flex-direction: row;
     justify-content: center;
     padding: 1rem 0;
-    font-size: 1.8rem;
+    font-size: 2.8rem;
   }
   
   .list-item:hover {
     background-color: var(--maya-blue);
     cursor: pointer;
+  }
+
+  .card-timer {
+    /* height: 240px; */
+    /* padding: 10px; */
+    /* background: var(--outer-space); */
+    color: #fff;
+    text-align: center;
+    font-size:5rem;
+    line-height: 1rem;
+  }
+  
+  .timer-text {
+    padding: 25px;
+    padding-bottom: 0;
+    margin-top: 5rem;
+    flex-wrap: wrap;
+  }
+
+  /* .large-font {
+    font-size: 3.5em;
+    text-align:center;
+  } */
+  .alert {
+    background-color: var(--maya-blue);
+    margin: 2rem 0;
+    font-size: 4rem;
   }
   
   /* end of question styles */
@@ -293,6 +322,17 @@
     .content-section {
       margin: 2rem 0.75rem;
     }
+
+    .card-timer {
+        height: 200px;
+      }
+
+      .timer-text {
+          display: flex;
+          flex-direction: column;
+        flex-wrap: wrap;
+
+      }
   }
   
   @keyframes animatedBackground {
