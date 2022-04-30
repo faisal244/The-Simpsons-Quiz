@@ -80,7 +80,7 @@ const handleOptionClick = (event) => {
     // get current target
     const currentTarget = event.currentTarget;
   
-    // get targetd
+    // get target
     const target = event.target;
   
     // check if click originates from li only
@@ -121,7 +121,36 @@ const handleOptionClick = (event) => {
 };
 
 
+const renderTimer = () => {
 
+       // create section
+       const section = document.createElement("section");
+       section.setAttribute("class", "content-section question-container");
+       
+
+       // Create timer
+       const div1 = document.createElement("div");
+       div1.setAttribute("class", "card-timer");
+   
+       const div2 = document.createElement("div");
+       div2.setAttribute("class", "timer-text");
+   
+       const div3 = document.createElement("div");
+       div3.setAttribute("class", "large-font timer-count");
+       div3.textContent = "60"
+       
+       const h3 = document.createElement("h3");
+       h3.setAttribute("class", "large-font timer-count");
+       h3.textContent = "seconds remaining"
+
+       div1.append(div2, div3, h3);
+
+        // append h2 and ul to section
+    section.append(div1);
+  
+    // append question section to main element
+    mainElement.append(section);
+};
 
 
 // function to render question to page
@@ -136,20 +165,7 @@ const renderQuestion = () => {
     section.setAttribute("class", "content-section question-container");
     section.setAttribute("id", "question-container");
   
-    // Create timer
-    const div1 = document.createElement("div");
-    div1.setAttribute("class", "card-timer");
-
-    const div2 = document.createElement("div");
-    div2.setAttribute("class", "timer-text");
-
-    const div3 = document.createElement("div");
-    div3.setAttribute("class", "large-font timer-count");
-    div3.textContent = "60"
-    
-    const h3 = document.createElement("h3");
-    h3.setAttribute("class", "large-font timer-count");
-    h3.textContent = "seconds remaining"
+ 
     
     // create h2
     const h2 = document.createElement("h2");
@@ -182,12 +198,12 @@ const renderQuestion = () => {
     li4.setAttribute("data-value", currentQuestion.options[3]);
     li4.textContent = currentQuestion.options[3];
   
-    div1.append(div2, div3, h3);
+    
 
     ul.append(li1, li2, li3, li4);
   
     // append h2 and ul to section
-    section.append(div1, h2, ul);
+    section.append(h2, ul);
   
     // append question section to main element
     mainElement.append(section);
@@ -254,6 +270,8 @@ const handleStartButtonClick = () => {
 
   // remove banner section
   removeBanner();
+
+  renderTimer ();
 
   // render question
   renderQuestion();
