@@ -18,7 +18,7 @@ const mainElement = document.getElementById("main");
 // current question index
 let questionIndex = 0;
 
-var timerElement = document.querySelector(".timer-count");
+// var timerElement = document.querySelector(".timer-count");
 // var startButton = document.querySelector("#start-btn");
 
 // all options
@@ -78,13 +78,13 @@ const renderQuestion = () => {
   
     // create h2
     const h2 = document.createElement("h2");
-    h2.setAttribute("class", "content-section-title");
+    h2.setAttribute("class", "question");
     // TODO: this should be the dynamic question title
     h2.textContent = `${questionIndex + 1}. ${currentQuestion.text}`;
   
-    // create ul and append 3 li
+    // create ul and append 4 li
     const ul = document.createElement("ul");
-    ul.setAttribute("class", "feedback-list");
+    ul.setAttribute("class", "question-list");
   
     // TODO: loop over options to create and append li to ul
     const li1 = document.createElement("li");
@@ -101,8 +101,13 @@ const renderQuestion = () => {
     li3.setAttribute("class", "list-item");
     li3.setAttribute("data-value", currentQuestion.options[2]);
     li3.textContent = currentQuestion.options[2];
+
+    const li4 = document.createElement("li");
+    li4.setAttribute("class", "list-item");
+    li4.setAttribute("data-value", currentQuestion.options[3]);
+    li4.textContent = currentQuestion.options[3];
   
-    ul.append(li1, li2, li3);
+    ul.append(li1, li2, li3, li4);
   
     // append h2 and ul to section
     section.append(h2, ul);
@@ -121,38 +126,39 @@ const removeBanner = () => {
     bannerSection.remove();
   };
 
-  // The startGame function is called when the start button is clicked
-function startTimer() {
-    // isWin = false;
-    timerCount = 30;
-    // Prevents start button from being clicked when round is in progress
-    startButton.disabled = true;
+//   // The startGame function is called when the start button is clicked
+// function startTimer() {
+//     var timerElement = document.querySelector(".timer-count")
+//     // isWin = false;
+//     timerCount = 30;
+//     // Prevents start button from being clicked when round is in progress
+//     startButton.disabled = true;
 
 
-//     // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
+// //     // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
 
-    // Sets timer
-    timer = setInterval(function() {
-      timerCount--;
-      timerElement.textContent = timerCount;
-    //   if (timerCount >= 0) {
-    //     // Tests if win condition is met
-    //     if (isWin && timerCount > 0) {
-    //       // Clears interval and stops timer
-    //       clearInterval(timer);
-    //       winGame();
-    //     }
-    //   }
+//     // Sets timer
+//     timer = setInterval(function() {
+//       timerCount--;
+//       timerElement.textContent = timerCount;
+//     //   if (timerCount >= 0) {
+//     //     // Tests if win condition is met
+//     //     if (isWin && timerCount > 0) {
+//     //       // Clears interval and stops timer
+//     //       clearInterval(timer);
+//     //       winGame();
+//     //     }
+//     //   }
       
-      // Tests if time has run out
-      if (timerCount === 0) {
-        // Clears interval
-        clearInterval(timer);
-        loseGame();
-      }
+//       // Tests if time has run out
+//       if (timerCount === 0) {
+//         // Clears interval
+//         clearInterval(timer);
+//         // loseGame();
+//       }
       
-    }, 1000);
-  }
+//     }, 1000);
+//   }
 
 
 
@@ -170,7 +176,7 @@ const handleStartButtonClick = () => {
   renderQuestion();
 
 //   Starts the timer
-  startTimer();
+//   startTimer();
 };
 
 
