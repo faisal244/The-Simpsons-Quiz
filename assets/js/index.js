@@ -27,8 +27,48 @@ let questionIndex = 0;
 // all questions array
 const questions = [
     {
-      text: "What was the name of Abe Simpsons military unit?",
-      options: ["The Chirping Cheep Cheeps", "The Jumping Sushies", "The Flaming Salamanders", "The Flying Hellfish"]
+        text: "What was the name of Abe Simpsons military unit?",
+        options: ["The Chirping Cheep Cheeps", "The Jumping Sushies", "The Flaming Salamanders", "The Flying Hellfish"]
+    },
+
+    {
+        text: "Which jazz musicians teaches Lisa about the blues?",
+        options: ["Missin' Eyeball Joe", "Bleeding Gums Murphy", "No Teeth Johnson", "Footless Frank Fontaine"]
+    },
+
+    {
+        text: "Who shot Mr. Burns?",
+        options: ["Tito Puente", "Barney Gumble", "Maggie Simpson", "Homer Simpson"]
+    },
+
+    {
+        text: "Who convinces Springfield to build a giant monorail?",
+        options: ["Troy McClure", "Lionel Hutz", "The Lyle Lanley", "Philip J. Fry"]
+    },
+
+    {
+        text: "Where does Krusty take the kids after realizing his camp is a sham?",
+        options: ["Disneyland", "Tijuana", "Las Vegas", "Legoland"]
+    },
+
+    {
+        text: "What is the name of Hans Moleman's film festival entry?",
+        options: ["Hans Moleman: A Football Saga", "Football to Groin", "Man Getting Hit by Football", "Hans Moleman Gets Hit by Football"]
+    },
+
+    {
+        text: "What is the secret ingredient in a Flaming Homer/Moe?",
+        options: ["Chili powder", "Whiskey", "Cough syrup", "Red wine"]
+    },
+
+    {
+        text: "What video game does Bart get caught stealing?",
+        options: ["Murder House", "Bonestorm", "Super Barrio Brothers", "Dragon Knights VI"]
+    },
+
+    {
+        text: "For which baseball team does Homer become the mascot?",
+        options: ["Springfield Electrons", "Springfield Protons", "Springfield Nucleons", "Springfield Isotopes"]
     },
 ];
 
@@ -40,25 +80,45 @@ const handleOptionClick = (event) => {
     // get current target
     const currentTarget = event.currentTarget;
   
-    // get target
+    // get targetd
     const target = event.target;
   
     // check if click originates from li only
     // check if target element is li element
     if (target.tagName === "LI") {
-      // get the option the user clicked on
-      const value = target.getAttribute("data-value");
+        // get the option the user clicked on
+        const value = target.getAttribute("data-value");
   
-      // get the question the user answered
-      const question = questions[questionIndex].text;
+        // get the question the user answered
+        const question = questions[questionIndex].text;
   
-      // build an answer object that contains question and answer
-      const answer = {
-        question,
-        value,
-      };
+        // build an answer object that contains question and answer
+        const answer = {
+            question,
+            value,
+        };
+
+        // // store answer in local storage
+        // storeInLS("feedbackResults", answer);
+
+        // remove question
+        removeQuestion();
+
+        if (questionIndex < questions.length - 1) {
+        // go to next question if not the last question
+        // increment the question index by 1
+        questionIndex += 1;
+
+        // render question
+        renderQuestion();
+        } 
+    //     else {
+    //     // if last question then render results and form
+    //     renderResults();
+    //     renderForm();
+    //     }
     }
-}
+};
 
 
 
@@ -143,6 +203,12 @@ const removeBanner = () => {
     bannerSection.remove();
   };
 
+  // function to remove question section from page
+const removeQuestion = () => {
+    console.log("remove question");
+    document.getElementById("question-container").remove();
+  };
+
   // The startGame function is called when the start button is clicked
 function startTimer() {
     var timerElement = document.querySelector(".timer-count")
@@ -175,7 +241,7 @@ function startTimer() {
       }
       
     }, 1000);
-  }
+  };
 
 
 
