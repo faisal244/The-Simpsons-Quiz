@@ -227,7 +227,7 @@
   
   .question-container {
     /* height: auto;   */
-    margin:5rem;
+    margin:2rem;
     padding: 0;
     background: transparent;
     background-image: linear-gradient(
@@ -246,8 +246,8 @@
   .question-container .question {
     background-color: rgba(var(--light-french-beige), 1);
     /* color: var(--mid) */
-    margin-top: 10rem;
-    margin-bottom: 5rem;
+    /* margin-top: 10rem; */
+    /* margin-bottom: 0rem; */
     font-size: 3rem;
     font-weight: bold; 
   }

@@ -76,6 +76,21 @@ const renderQuestion = () => {
     section.setAttribute("class", "content-section question-container");
     section.setAttribute("id", "question-container");
   
+    // Create timer
+    const div1 = document.createElement("div");
+    div1.setAttribute("class", "card-timer");
+
+    const div2 = document.createElement("div");
+    div2.setAttribute("class", "timer-text");
+
+    const div3 = document.createElement("div");
+    div3.setAttribute("class", "large-font timer-count");
+    div3.textContent = "60"
+    
+    const h3 = document.createElement("h3");
+    h3.setAttribute("class", "large-font timer-count");
+    h3.textContent = "seconds remaining"
+    
     // create h2
     const h2 = document.createElement("h2");
     h2.setAttribute("class", "question");
@@ -107,10 +122,12 @@ const renderQuestion = () => {
     li4.setAttribute("data-value", currentQuestion.options[3]);
     li4.textContent = currentQuestion.options[3];
   
+    div1.append(div2, div3, h3);
+
     ul.append(li1, li2, li3, li4);
   
     // append h2 and ul to section
-    section.append(h2, ul);
+    section.append(div1, h2, ul);
   
     // append question section to main element
     mainElement.append(section);
@@ -126,39 +143,39 @@ const removeBanner = () => {
     bannerSection.remove();
   };
 
-//   // The startGame function is called when the start button is clicked
-// function startTimer() {
-//     var timerElement = document.querySelector(".timer-count")
-//     // isWin = false;
-//     timerCount = 30;
-//     // Prevents start button from being clicked when round is in progress
-//     startButton.disabled = true;
+  // The startGame function is called when the start button is clicked
+function startTimer() {
+    var timerElement = document.querySelector(".timer-count")
+    // isWin = false;
+    timerCount = 30;
+    // Prevents start button from being clicked when round is in progress
+    startButton.disabled = true;
 
 
-// //     // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
+//     // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
 
-//     // Sets timer
-//     timer = setInterval(function() {
-//       timerCount--;
-//       timerElement.textContent = timerCount;
-//     //   if (timerCount >= 0) {
-//     //     // Tests if win condition is met
-//     //     if (isWin && timerCount > 0) {
-//     //       // Clears interval and stops timer
-//     //       clearInterval(timer);
-//     //       winGame();
-//     //     }
-//     //   }
+    // Sets timer
+    timer = setInterval(function() {
+      timerCount--;
+      timerElement.textContent = timerCount;
+    //   if (timerCount >= 0) {
+    //     // Tests if win condition is met
+    //     if (isWin && timerCount > 0) {
+    //       // Clears interval and stops timer
+    //       clearInterval(timer);
+    //       winGame();
+    //     }
+    //   }
       
-//       // Tests if time has run out
-//       if (timerCount === 0) {
-//         // Clears interval
-//         clearInterval(timer);
-//         // loseGame();
-//       }
+      // Tests if time has run out
+      if (timerCount === 0) {
+        // Clears interval
+        clearInterval(timer);
+        // loseGame();
+      }
       
-//     }, 1000);
-//   }
+    }, 1000);
+  }
 
 
 
@@ -176,7 +193,7 @@ const handleStartButtonClick = () => {
   renderQuestion();
 
 //   Starts the timer
-//   startTimer();
+  startTimer();
 };
 
 
