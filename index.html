@@ -80,18 +80,19 @@
             </div>
             </div>
 
-            <h2 class="content-section-title">
+            <h2 class="question">
             In the episode 'Lisa Gets an 'A'', Homer buys a pet called Pinchy - what sort of animal is Pinchy?
             </h2>
 
-            <ul class="feedback-list">
+            <ul class="question-list">
             <li class="list-item">Answer 1</li>
             <li class="list-item">Answer 2</li>
             <li class="list-item">Answer 3</li>
             <li class="list-item">Answer 4</li>
             </ul>
 
-            <div class="alert">render correct/incorrect message here after the answer is selected in the quiz</div>
+            <div class="alert">render correct/incorrect message here
+            </div>
             <!-- Create a function for this div called renderAlert, and then you can reuse this field for error messages on the high scores page - can set color to red or green boxes to show if content has validated or not -->
         </section>
     
@@ -105,8 +106,8 @@
           <!-- SECTION 3 - third page content - high scores submission form and high scores page - build the page seperately and link in the top nav, but have the submission form dynamically render with JS after the last question gets answered -->
 
               <!-- high score form section dynamically rendered via JS -->
-        <section class="feedback-form-section" name="feedback-form">
-            <h2 class="title">Submit your high score</h2>
+        <section class="high-score-form-section" name="high-score-form">
+            <h2 class="title alert">Submit your high score</h2>
             <form>
                 <div class="form-control">
                     <input
@@ -119,7 +120,7 @@
                     <!-- need to validate here - if value is empty, render an error message saying name field can't be blank -->
             </div>
             <div class="form-control">
-                <button class="btn" type="submit">Submit</button>
+                <button class="btn-2" type="submit">Submit</button>
                 <!-- javascript function needed here - call it handleSubmit  -->
             </div>
             </form>
@@ -127,11 +128,18 @@
 
         
 
+        <section class="high-score-form-section title alert">
+            <!-- option for a 4th page - remove high score once submitted, replace with a h1 and a h2 saying thank you for submitting -->
+            <h1>thank you for submitting</h1>
+            <h2>cowabunga dudes</h2>
+            
+            <div class ="high-score-list">
+                <div class = "high-score-list-item"><a href="highscores.html">View High Scores</a></div>
+                <div class = "high-score-list-item"><a href="index.html">Play again</a></div>
+                <div class = "high-score-list-item"><a href="index.html">Back to homepage</a></div>
+            </div>  
 
-        <!-- option for a 4th page - remove high score once submitted, replace with a h1 and a h2 saying thank you for submitting -->
-        <h1>thank you for submitting</h1>
-        <h2>cowabunga dudes</h2>
-        <div><a href="index.html">Link to homepage</a></div>
+        </section>
 
     </main>
   

@@ -55,6 +55,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
+    /* position: fixed; top */
   }
   
   .nav-link-logo {
@@ -63,8 +64,8 @@
   }
   
   .nav-link-logo:hover {
-    box-shadow: 0 0 1rem 0.5rem var(--light-french-beige);
-    background-color: var(--light-french-beige);
+    box-shadow: 0 0 1rem 0.5rem var(--maya-blue);
+    background-color: var(--maya-blue);
     /* text-decoration: none; */
   }
   
@@ -85,9 +86,9 @@
   }
   
   .nav-link:hover {
-    border-bottom: 0.2rem solid var(--light-french-beige);
-    box-shadow: 0 0 1rem 0.5rem var(--light-french-beige);
-    background-color: var(--light-french-beige);
+    border-bottom: 0.2rem solid var(--maya-blue);
+    box-shadow: 0 0 1rem 0.5rem var(--maya-blue);
+    background-color: var(--maya-blue);
   }
   
   /* end of header styles */
@@ -115,12 +116,13 @@
     text-decoration: none;
     color: var(--outer-space);
     margin: 0.5rem 0;
+    font-size: 3rem;
   }
   
   .contact-link:hover {
     border-bottom: 0.2rem solid var(--ash-grey);
-    box-shadow: 0 0 1rem 0.5rem var(--light-french-beige);
-    background-color: var(--light-french-beige);
+    box-shadow: 0 0 1rem 0.5rem var(--maya-blue);
+    background-color: var(--maya-blue);
   }
   
   /* end of footer styles */
@@ -195,7 +197,25 @@
   /* background outer space looks good on the button hover here */
   .btn:hover {
     cursor: pointer;
-    background-color: var(--light-french-beige);
+    background-color: var(--maya-blue);
+    box-shadow: 0.5rem 0.5rem 0.7rem rgba(var(--ash-grey-rgb), 0.3);
+  }
+
+  .btn-2 {
+    padding: 1.5rem 2rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.4rem;
+    min-width: 20rem;
+    text-transform: uppercase;
+    background-color: var(--metallic-yellow);
+    color: var(--outer-space);
+  }
+
+  .btn-2:hover {
+    cursor: pointer;
+    background-color: var(--ash-grey);
     box-shadow: 0.5rem 0.5rem 0.7rem rgba(var(--ash-grey-rgb), 0.3);
   }
   
@@ -209,8 +229,8 @@
     background: transparent;
     background-image: linear-gradient(
         to bottom,
-        rgba(var(--ash-grey-rgb), 0.7),
-        rgba(var(--ash-grey-rgb), 0.4)
+        rgba(var(--ash-grey-rgb), 0.8),
+        rgba(var(--ash-grey-rgb), 0.8)
       ),
       /* url("/images/simpsons-take-quiz-dinner.jpeg"); */
       url("/images/simpsonsclassic.jpg");
@@ -220,14 +240,20 @@
     /* animation: animatedBackground 10s linear infinite alternate; */
   }
   
-  .question-container .content-section-title {
-    background-color: rgba(var(--light-french-beige), 0.8);
+  .question-container .question {
+    background-color: rgba(var(--light-french-beige), 1);
     /* color: var(--mid) */
     margin-top: 0;
-    
+    font-size: 3rem;
+    font-weight: bold; 
+  }
+
+  .question{
+      display: block;
+      background-color:black
   }
   
-  .feedback-list {
+  .question-list {
     list-style: none;
     text-align: left;
     /* margin: 3rem 2rem; */
@@ -249,13 +275,31 @@
     cursor: pointer;
   }
 
+  .high-score-list{
+    padding: 2rem;
+    border-radius: 0.4rem;
+    font-size: 4rem;
+  }
+
+  .high-score-list-item:hover {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* padding: 1rem 0; */
+    font-size: 4rem;
+    background-color: var(--metallic-yellow);
+    cursor: pointer;
+    
+  }
+
+
   .card-timer {
     /* height: 240px; */
     /* padding: 10px; */
     /* background: var(--outer-space); */
     color: #fff;
     text-align: center;
-    font-size:5rem;
+    font-size:4rem;
     line-height: 1rem;
   }
   
@@ -272,15 +316,15 @@
   } */
   .alert {
     background-color: var(--maya-blue);
-    margin: 2rem 0;
-    font-size: 4rem;
+    margin: 1rem 0;
+    font-size: 2rem;
   }
   
   /* end of question styles */
   
   /* start of form section styles */
   
-  .feedback-form-section {
+  .high-score-form-section {
     background-color: var(--maya-blue);
     margin: 2rem 0;
   }
@@ -292,7 +336,7 @@
     letter-spacing: 0.4rem;
   }
   
-  /* feedback form styles */
+  /* High Score form styles */
   
   .form-control {
     display: flex;
@@ -311,6 +355,7 @@
   .form-input::placeholder {
     font-size: 1.6rem;
     letter-spacing: 0.4rem;
+    text-align: center;
   }
   
   /* end of form section styles */
