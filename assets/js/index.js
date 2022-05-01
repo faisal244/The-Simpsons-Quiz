@@ -18,6 +18,10 @@ const mainElement = document.getElementById("main");
 // current question index
 let questionIndex = 0;
 
+// Player Score variable
+let playerScore= 0;
+let correctLog = 0;
+
 // var timerElement = document.querySelector(".timer-count");
 // var startButton = document.querySelector("#start-btn");
 
@@ -64,19 +68,19 @@ const questions = [
 
     {
         text: "What is the secret ingredient in a Flaming Homer/Moe?",
-        options: ["Chili powder", "Whiskey", "Cough syrup", "Red wine"]
+        options: ["Chili powder", "Whiskey", "Cough syrup", "Red wine"],
         answer: "Cough syrup",
     },
 
     {
         text: "What video game does Bart get caught stealing?",
-        options: ["Murder House", "Bonestorm", "Super Barrio Brothers", "Dragon Knights VI"]
+        options: ["Murder House", "Bonestorm", "Super Barrio Brothers", "Dragon Knights VI"],
         answer: "Bonestorm",
     },
 
     {
         text: "For which baseball team does Homer become the mascot?",
-        options: ["Springfield Electrons", "Springfield Protons", "Springfield Nucleons", "Springfield Isotopes"]
+        options: ["Springfield Electrons", "Springfield Protons", "Springfield Nucleons", "Springfield Isotopes"],
         answer: "Springfield Isotopes",
     },
 ];
@@ -107,6 +111,16 @@ const handleOptionClick = (event) => {
             value,
         };
 
+        if (answer.value === questions[questionIndex].answer) {
+            answeredCorrectly();
+            console.log("correct");
+        }
+        else {
+            answeredInCorrectly();
+            console.log("incorrect");
+        }   
+	
+
         // // store answer in local storage
         // storeInLS("feedbackResults", answer);
 
@@ -130,6 +144,9 @@ const handleOptionClick = (event) => {
 };
 
 
+
+
+// function to render timer to page
 const renderTimer = () => {
 
        // create section
@@ -146,6 +163,7 @@ const renderTimer = () => {
    
        const div3 = document.createElement("div");
        div3.setAttribute("class", "large-font timer-count");
+       div3.setAttribute("id", "timer-count");
        div3.textContent = "60"
        
        const h3 = document.createElement("h3");
@@ -219,7 +237,84 @@ const renderQuestion = () => {
     // add event listener on question section
     section.addEventListener("click", handleOptionClick);
   };
+
+      // function to render the results
+      const renderResults = () => {
+        console.log("render results");
+        };
+    
+        const renderForm = () => {
+            console.log("render game over screen");
+        };
+
+
+// *******************************************
+
+
+    // if answered was correct this checks if current question index is less than questions items and and add score 
+    // and updates content, else loads gameOver
+    const answeredCorrectly = () => {
+        playerScore +=10;
+        correctLog++;
+        questionIndex++;
+        console.log(playerScore);
+     
+            // outcomeDisplay.style.color = "green";
+            // outcomeDisplay.textContent = "Awesome! You answered correctly. Progess: " + correctLog + "/" + questions.length;
+        // } 
+        // else {
+        //     timeLeft = 0;
+
+        // if (timerCount === 0) {
+        //     // Clears interval
+        //     clearInterval(timer);
+        //     // loseGame();
+        //   }
+    };
+
+    // **************************TO DO **************************************
+    // create a dynamically rendered game over page/submit high score form 
+    // use the 2 functions renderResults() and renderForm() below
+    // Create a remove timer function that will fire when the renderResults and renderForm functions are triggered - any scenerio where the game ends 
+    // set up local storage get and set functions for the high scores section
+    // consider seconds on timer = 10 seconds per question in the questions array, so the time on the clock can be dynamic instead of hardcoded
+
+
+    // if answered was incorrect this checks if current question index is less than questions items 
+    // and updates content, else loads gameOver
+    const answeredInCorrectly = () => {
+        questionIndex++;
+        // let timerCount = document.getElementById ("timer-count");
+        var timerElement = document.querySelector(".timer-count")
+        timerCount -=5;
+
+            // alert.style.color = "red";
+            // alert.textContent = "Oops! You answered incorrectly. Progess: " + correctLog + "/" + questions.length;
+        // }   
+        // else {
+        //     timeLeft = 0; 
+
+        if (timerCount <= 0) {
+            // Clears interval
+            clearInterval(timer);
+            // loseGame();
+            renderResults();
+            renderForm();
+            
+          };
+          
   
+    };
+
+
+// ****************************************************************
+
+
+//   TO DO - Function to remove the timer from the page on game completion
+
+const removeTimer = () => {
+
+}
 
   // function to remove banner from page
 const removeBanner = () => {
@@ -402,4 +497,4 @@ startButton.addEventListener("click", handleStartButtonClick);
 // // read from local storage
 // // get the array 
 // // go through each item, 
-// // render scores from score objects
+// // render scores from score objects;
