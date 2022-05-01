@@ -28,47 +28,56 @@ let questionIndex = 0;
 const questions = [
     {
         text: "What was the name of Abe Simpsons military unit?",
-        options: ["The Chirping Cheep Cheeps", "The Jumping Sushies", "The Flaming Salamanders", "The Flying Hellfish"]
+        options: ["The Chirping Cheep Cheeps", "The Jumping Sushies", "The Flaming Salamanders", "The Flying Hellfish"],
+        answer: "The Flying Hellfish",
     },
 
     {
         text: "Which jazz musicians teaches Lisa about the blues?",
-        options: ["Missin' Eyeball Joe", "Bleeding Gums Murphy", "No Teeth Johnson", "Footless Frank Fontaine"]
+        options: ["Missin' Eyeball Joe", "Bleeding Gums Murphy", "No Teeth Johnson", "Footless Frank Fontaine"],
+        answer: "Bleeding Gums Murphy",
     },
 
     {
         text: "Who shot Mr. Burns?",
-        options: ["Tito Puente", "Barney Gumble", "Maggie Simpson", "Homer Simpson"]
+        options: ["Tito Puente", "Barney Gumble", "Maggie Simpson", "Homer Simpson"],
+        answer: "Maggie Simpson",
     },
 
     {
         text: "Who convinces Springfield to build a giant monorail?",
-        options: ["Troy McClure", "Lionel Hutz", "The Lyle Lanley", "Philip J. Fry"]
+        options: ["Troy McClure", "Lionel Hutz", "Lyle Lanley", "Philip J. Fry"],
+        answer: "Lyle Lanley",
     },
 
     {
         text: "Where does Krusty take the kids after realizing his camp is a sham?",
-        options: ["Disneyland", "Tijuana", "Las Vegas", "Legoland"]
+        options: ["Disneyland", "Tijuana", "Las Vegas", "Legoland"],
+        answer: "Tijuana",
     },
 
     {
         text: "What is the name of Hans Moleman's film festival entry?",
-        options: ["Hans Moleman: A Football Saga", "Football to Groin", "Man Getting Hit by Football", "Hans Moleman Gets Hit by Football"]
+        options: ["Hans Moleman: A Football Saga", "Football to Groin", "Man Getting Hit by Football", "Hans Moleman Gets Hit by Football"],
+        answer: "Man Getting Hit by Football",
     },
 
     {
         text: "What is the secret ingredient in a Flaming Homer/Moe?",
         options: ["Chili powder", "Whiskey", "Cough syrup", "Red wine"]
+        answer: "Cough syrup",
     },
 
     {
         text: "What video game does Bart get caught stealing?",
         options: ["Murder House", "Bonestorm", "Super Barrio Brothers", "Dragon Knights VI"]
+        answer: "Bonestorm",
     },
 
     {
         text: "For which baseball team does Homer become the mascot?",
         options: ["Springfield Electrons", "Springfield Protons", "Springfield Nucleons", "Springfield Isotopes"]
+        answer: "Springfield Isotopes",
     },
 ];
 
@@ -145,12 +154,13 @@ const renderTimer = () => {
 
        div1.append(div2, div3, h3);
 
-        // append h2 and ul to section
-    section.append(div1);
-  
-    // append question section to main element
-    mainElement.append(section);
-};
+       // append h2 and ul to section
+       section.append(div1); 
+
+       // append question section to main element
+       mainElement.append(section); 
+
+};  
 
 
 // function to render question to page
@@ -164,8 +174,6 @@ const renderQuestion = () => {
     const section = document.createElement("section");
     section.setAttribute("class", "content-section question-container");
     section.setAttribute("id", "question-container");
-  
- 
     
     // create h2
     const h2 = document.createElement("h2");
@@ -224,6 +232,8 @@ const removeQuestion = () => {
     console.log("remove question");
     document.getElementById("question-container").remove();
   };
+
+  
 
   // The startGame function is called when the start button is clicked
 function startTimer() {
