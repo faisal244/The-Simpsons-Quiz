@@ -71,16 +71,16 @@
 
            <!-- question section dynamically rendered via JS -->
         
-        <!-- <section class="content-section question-container" id="question-container">
+        <!-- <section class="content-section question-container" id="question-container"> -->
            
-            <div class= "card-timer">
-                <div class = "timer-text">
+            <div class= "card-timer" style="display: block">
+                <!-- <div class = "timer-text">
                 <div class="large-font timer-count">60</div>
                 <h3 class="'large-font timer-count">seconds remaining</h3>
-            </div>
+            </div> -->
             </div>
 
-            <h2 class="question">
+            <!-- <h2 class="question">
             In the episode 'Lisa Gets an 'A'', Homer buys a pet called Pinchy - what sort of animal is Pinchy?
             </h2>
 
@@ -92,9 +92,9 @@
             </ul>
 
             <div class="alert">render correct/incorrect message here
-            </div> -->
+            </div> --> 
             <!-- Create a function for this div called renderAlert, and then you can reuse this field for error messages on the high scores page - can set color to red or green boxes to show if content has validated or not -->
-        <!-- </section> -->
+         <!-- </section>  -->
     
     
      
@@ -106,7 +106,7 @@
           <!-- SECTION 3 - third page content - high scores submission form and high scores page - build the page seperately and link in the top nav, but have the submission form dynamically render with JS after the last question gets answered -->
 
               <!-- high score form section dynamically rendered via JS -->
-        <!-- <section class="high-score-form-section" name="high-score-form">
+        <section class="high-score-form-section title alert" name="high-score-form">
             <h2 class="title alert">Submit your high score</h2>
             <form>
                 <div class="form-control">
@@ -115,10 +115,10 @@
                     id="full-name"
                     class="form-input"
                     type="text"
-                    placeholder="Enter full name" -->
-                    <!-- /> -->
-                    <!-- need to validate here - if value is empty, render an error message saying name field can't be blank -->
-            <!-- </div> -->
+                    placeholder="Enter full name"
+                    /> 
+                    <!-- need to validate here - if value is empty, render an error message saying name field can't be blank
+            </div> -->
             
             <!-- Maybe display the users answers here, pulling from local storage to show which ones were answered right and which were incorrect, maybe like a top 10 or top 5 high scores table-->
 
@@ -132,18 +132,18 @@
 
         
 
-        <!-- <section class="high-score-form-section title alert"> -->
+        
             <!-- option for a 4th page - remove high score once submitted, replace with a h1 and a h2 saying thank you for submitting -->
-            <!-- <h1>thank you for submitting</h1>
+          <h1>thank you for submitting</h1>
             <h2>cowabunga dudes</h2>
             
             <div class ="high-score-list">
                 <div class = "high-score-list-item"><a href="highscores.html">View High Scores</a></div>
                 <div class = "high-score-list-item"><a href="index.html">Play again</a></div>
                 <div class = "high-score-list-item"><a href="index.html">Back to homepage</a></div>
-            </div>   -->
+            </div>  
 
-        <!-- </section> -->
+        </section> 
 
     </main> 
   

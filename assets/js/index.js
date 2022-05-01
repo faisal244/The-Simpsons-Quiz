@@ -1,8 +1,6 @@
 // // global declarations
 // // each question gets 10 seconds on the timer
-// const questions =[];
 // let timerValue = 10 * questions.length;
-// let questionIndex = 0;
 // let quizComplete = false;
 
 
@@ -11,6 +9,12 @@ const startButton = document.getElementById("start-btn");
 
 // target banner section
 const bannerSection = document.getElementById("banner");
+
+const TimerSection = document.getElementById("card-timer");
+
+
+
+
 
 // target main element
 const mainElement = document.getElementById("main");
@@ -135,11 +139,13 @@ const handleOptionClick = (event) => {
         // render question
         renderQuestion();
         } 
-    //     else {
+        else {
+            removeTimerSection ();
+            removeQuestion ();
     //     // if last question then render results and form
     //     renderResults();
     //     renderForm();
-    //     }
+        }
     }
 };
 
@@ -157,6 +163,8 @@ const renderTimer = () => {
        // Create timer
        const div1 = document.createElement("div");
        div1.setAttribute("class", "card-timer");
+       div1.setAttribute("display", "flex");
+
    
        const div2 = document.createElement("div");
        div2.setAttribute("class", "timer-text");
@@ -223,7 +231,7 @@ const renderQuestion = () => {
     li4.setAttribute("class", "list-item");
     li4.setAttribute("data-value", currentQuestion.options[3]);
     li4.textContent = currentQuestion.options[3];
-  
+
     
 
     ul.append(li1, li2, li3, li4);
@@ -238,15 +246,45 @@ const renderQuestion = () => {
     section.addEventListener("click", handleOptionClick);
   };
 
-      // function to render the results
-      const renderResults = () => {
-        console.log("render results");
-        };
-    
-        const renderForm = () => {
-            console.log("render game over screen");
-        };
 
+  const renderGameOver = () => {
+
+      // create section
+      const section = document.createElement("section");
+      section.setAttribute("class", "content-section question-container");
+      section.setAttribute("id", "question-container");
+
+        // create h2
+    const h2 = document.createElement("h2");
+    h2.setAttribute("class", "question");
+
+    
+
+  }
+
+  
+  // function to render the results
+  const renderResults = () => {
+      console.log("render results");
+    };
+    
+    const renderForm = () => {
+        console.log("render game over screen");
+    };
+    
+    // const removeTimerSection = () => {
+    //     console.log("remove question");
+    //     // document.getElementById("card-timer").remove();
+    //     setTimeout(function() {
+    //         document.getElementById("card-timer").style.display = "none";
+    //     // TimerSection.style.display = 'none';
+
+
+
+    //     } );
+    // };
+      
+           
 
 // *******************************************
 
@@ -256,20 +294,24 @@ const renderQuestion = () => {
     const answeredCorrectly = () => {
         playerScore +=10;
         correctLog++;
-        questionIndex++;
-        console.log(playerScore);
+        // questionIndex++;
+        if (questionIndex < questions.length - 1) {
+            console.log(playerScore);
+            return playerScore;
+
      
             // outcomeDisplay.style.color = "green";
             // outcomeDisplay.textContent = "Awesome! You answered correctly. Progess: " + correctLog + "/" + questions.length;
         // } 
-        // else {
-        //     timeLeft = 0;
+        } else {
+            timeLeft = 0;
 
-        // if (timerCount === 0) {
-        //     // Clears interval
-        //     clearInterval(timer);
+        if (timerCount === 0) {
+            // clears interval
+            clearInterval(timer);
         //     // loseGame();
-        //   }
+          }
+        };
     };
 
     // **************************TO DO **************************************
@@ -283,7 +325,7 @@ const renderQuestion = () => {
     // if answered was incorrect this checks if current question index is less than questions items 
     // and updates content, else loads gameOver
     const answeredInCorrectly = () => {
-        questionIndex++;
+        // questionIndex++;
         // let timerCount = document.getElementById ("timer-count");
         var timerElement = document.querySelector(".timer-count")
         timerCount -=5;
@@ -294,12 +336,17 @@ const renderQuestion = () => {
         // else {
         //     timeLeft = 0; 
 
-        if (timerCount <= 0) {
+        // if (timerCount <= 0) {
+            if (questionIndex === questions.length - 1) {
             // Clears interval
             clearInterval(timer);
             // loseGame();
+            timeLeft = 0; 
+            // removeQuestion ();
+            removeTimerSection ();
             renderResults();
             renderForm();
+            
             
           };
           
@@ -312,9 +359,7 @@ const renderQuestion = () => {
 
 //   TO DO - Function to remove the timer from the page on game completion
 
-const removeTimer = () => {
 
-}
 
   // function to remove banner from page
 const removeBanner = () => {
@@ -325,6 +370,7 @@ const removeBanner = () => {
   // function to remove question section from page
 const removeQuestion = () => {
     console.log("remove question");
+
     document.getElementById("question-container").remove();
   };
 
@@ -358,6 +404,7 @@ function startTimer() {
       if (timerCount === 0) {
         // Clears interval
         clearInterval(timer);
+        setTimeout();
         // loseGame();
       }
       
