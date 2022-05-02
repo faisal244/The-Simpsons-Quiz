@@ -140,8 +140,9 @@ const handleOptionClick = (event) => {
         renderQuestion();
         } 
         else {
-            removeTimerSection ();
-            removeQuestion ();
+            renderGameOver ();
+            // removeTimerSection ();
+            // removeQuestion ();
     //     // if last question then render results and form
     //     renderResults();
     //     renderForm();
@@ -154,7 +155,7 @@ const handleOptionClick = (event) => {
 
 // function to render timer to page
 const renderTimer = () => {
-
+    console.log("render timer");
        // create section
        const section = document.createElement("section");
        section.setAttribute("class", "content-section question-container");
@@ -251,26 +252,72 @@ const renderQuestion = () => {
 
       // create section
       const section = document.createElement("section");
-      section.setAttribute("class", "content-section question-container");
-      section.setAttribute("id", "question-container");
+      section.setAttribute("class", "high-score-form-section title alert");
+      section.setAttribute("name", "high-score-form");
+
+      // create h1
+      const h1 = document.createElement("h1");
+    //   h1.setAttribute("class", "question");
+      h1.textContent = ("GAME OVER");
+
+            // create Image
+    const img = document.createElement("img");
+    img.setAttribute("src", "./images/egghead.jpg");
+    img.setAttribute("id", "game-over-image")
+    
 
         // create h2
     const h2 = document.createElement("h2");
-    h2.setAttribute("class", "question");
+    h2.setAttribute("class", "title alert");
+    h2.textContent = ("Submit your high score");
 
-    
+    // Create Form Field 
+
+    const form = document.createElement("form");
+
+    const inputDiv = document.createElement("div");
+  inputDiv.setAttribute("class", "form-control");
+
+
+  const input = document.createElement("input");
+  input.setAttribute("id", "full-name");
+  input.setAttribute("class", "form-input");
+  input.setAttribute("type", "text");
+  input.setAttribute("placeholder", "Enter full name");
+
+  inputDiv.append(input);
+
+//   Create submit button
+
+  const button = document.createElement("button");
+  button.setAttribute("type", "submit");
+  button.setAttribute("class", "btn-2");
+  button.textContent = "Submit";
+
+  form.append(inputDiv, button);
+
+  section.append(h1, img, h2, form);
+
+  mainElement.append(section);
+
+  // add event listener for form submission
+  form.addEventListener("submit", handleFormSubmit);
+
+  };
+  
+
+  const handleFormSubmit = () => {
 
   }
-
   
   // function to render the results
   const renderResults = () => {
       console.log("render results");
     };
     
-    const renderForm = () => {
-        console.log("render game over screen");
-    };
+    // const renderForm = () => {
+    //     console.log("render game over screen");
+    // };
     
     // const removeTimerSection = () => {
     //     console.log("remove question");
@@ -303,14 +350,15 @@ const renderQuestion = () => {
             // outcomeDisplay.style.color = "green";
             // outcomeDisplay.textContent = "Awesome! You answered correctly. Progess: " + correctLog + "/" + questions.length;
         // } 
-        } else {
-            timeLeft = 0;
+        // } else {
+        //     timeLeft = 0;
 
-        if (timerCount === 0) {
-            // clears interval
-            clearInterval(timer);
-        //     // loseGame();
-          }
+        // if (timerCount === 0) {
+        //     // clears interval
+        //     clearInterval(timer);
+        //     renderGameOver();
+        // //     // loseGame();
+        //   }
         };
     };
 
@@ -343,12 +391,22 @@ const renderQuestion = () => {
             // loseGame();
             timeLeft = 0; 
             // removeQuestion ();
-            removeTimerSection ();
-            renderResults();
-            renderForm();
+            // removeTimerSection ();
+            // renderResults();
+            // renderForm();
+            // renderGameOver();
             
             
-          };
+          } else {
+            timeLeft = 0;
+
+        if (timerCount === 0) {
+            // clears interval
+            clearInterval(timer);
+            renderGameOver();
+        //     // loseGame();
+          }
+        };
           
   
     };
@@ -404,7 +462,7 @@ function startTimer() {
       if (timerCount === 0) {
         // Clears interval
         clearInterval(timer);
-        setTimeout();
+        // setTimeout();
         // loseGame();
       }
       
