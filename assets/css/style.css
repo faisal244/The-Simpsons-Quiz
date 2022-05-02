@@ -244,6 +244,24 @@
     background-repeat: repeat-x;
     /* animation: animatedBackground 10s linear infinite alternate; */
   }
+
+
+  .timer-container {
+    /* height: auto;   */
+    margin:1rem;
+    padding: 0;
+    background: transparent;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(var(--ash-grey-rgb), 0.8),
+        rgba(var(--ash-grey-rgb), 0.8)
+      ),
+      /* url("/images/simpsons-take-quiz-dinner.jpeg"); */
+      url("/images/simpsonsclassic.jpg");
+      
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+  }
   
   .question-container .question {
     background-color: rgba(var(--light-french-beige), 1);

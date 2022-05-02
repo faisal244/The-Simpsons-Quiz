@@ -12,12 +12,13 @@ const bannerSection = document.getElementById("banner");
 
 const TimerSection = document.getElementById("card-timer");
 
+questionContainer = document.getElementById("question-container")
 
 // target main element
 const mainElement = document.getElementById("main");
 
 // total time on the clock
-let countdownClock = 60;
+let countdownClock = 30;
 
 // current question index
 let questionIndex = 0;
@@ -91,9 +92,11 @@ const questions = [
     {
     text: "Who does Homer work for without realizing he is a super villain?",
     options: ["Luigi Risotto", "Lucius Sweet", "Hank Scorpio", "Rainier Wolfcastle"],
-    answer: "Springfield Isotopes",
+    answer: "Hank Scorpio",
 },
 ];
+
+
 
 // event handler function to handle click events in question section
 // this function decides what happens next
@@ -121,7 +124,7 @@ const handleOptionClick = (event) => {
             value,
         };
 
-        if (answer.value === questions[questionIndex].answer) {
+        if (answer.value === questions[questionIndex].answer && questionIndex <= questions.length - 1) {
             answeredCorrectly();
             console.log("correct");
         }
@@ -134,19 +137,21 @@ const handleOptionClick = (event) => {
         // // store answer in local storage
         // storeInLS("feedbackResults", answer);
 
-        // remove question
-        removeQuestion();
+       
 
         if (questionIndex < questions.length - 1) {
         // go to next question if not the last question
         // increment the question index by 1
         questionIndex += 1;
 
+         // remove question
+         removeQuestion();
+
         // render question
         renderQuestion();
         } 
         else {
-          
+           
             renderGameOver ();
             // removeTimerSection ();
             // removeQuestion ();
@@ -201,7 +206,7 @@ const renderTimer = () => {
     console.log("render timer");
        // create section
        const TimerSection = document.createElement("section");
-       TimerSection.setAttribute("class", "content-section question-container");
+       TimerSection.setAttribute("class", "content-section timer-container");
        TimerSection.setAttribute("id", "timer-container");
        // Create timer 
        const timerElement = document.createElement("div");
@@ -281,7 +286,7 @@ const renderQuestion = () => {
   const renderGameOver = () => {
 
     document.querySelector("#clock").remove();
-    // document.getElementById("question-container").remove();
+    document.getElementById("question-container").remove();
     // const finalScore = countdownClock;
 
       // create section
@@ -337,9 +342,12 @@ const renderQuestion = () => {
   // add event listener for form submission
   form.addEventListener("submit", handleFormSubmit);
 
+  
   };
   
 
+
+  
   const handleFormSubmit = () => {
 
   }
@@ -373,16 +381,21 @@ const renderQuestion = () => {
     // if answered was correct this checks if current question index is less than questions items and and add score 
     // and updates content, else loads gameOver
     const answeredCorrectly = () => {
+        //  let countdownClock = countdownClock;
         countdownClock +=5;
         playerScore +=10;
         correctLog++;
+        console.log(playerScore);
         // questionIndex++;
         if (questionIndex < questions.length - 1) {
-            console.log(playerScore);
+           
             return playerScore;
-        } else if 
-            (countdownClock <= 0) {
-            clearInterval(clock);
+
+        } else {
+            console.log(playerScore);
+            countdownClock = 0
+            // renderGameOver();
+            // return playerScore;
 
      
             // outcomeDisplay.style.color = "green";
@@ -415,9 +428,18 @@ const renderQuestion = () => {
         // questionIndex++;
         // let timerCount = document.getElementById ("timer-count");
         // var timerElement = document.querySelector(".timer-count")
+        // let countdownClock = countdownClock;
+
         countdownClock -=5;
         if (countdownClock <= 0) {
             clearInterval(clock);
+            console.log(playerScore);
+            // removeQuestion ();
+            countdownClock = 0
+
+            // renderGameOver();
+
+            // return playerScore;
 
             // alert.style.color = "red";
             // alert.textContent = "Oops! You answered incorrectly. Progess: " + correctLog + "/" + questions.length;
@@ -494,10 +516,12 @@ const startTimer = () => {
             // const questionsContainer = document.getElementById("question-container");
             // questionsContainer.remove();
 
-            const timerContainer = document.getElementById("timer-container");
-            timerContainer.remove();
-
+            // const timerContainer = document.getElementById("timer-container");
+            // timerContainer.remove();
+            // removeQuestion ();
             renderGameOver();
+
+            
 
     //   timerCount--;
     //   timerElement.textContent = timerCount;
