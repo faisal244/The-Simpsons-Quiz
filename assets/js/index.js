@@ -13,11 +13,11 @@ const bannerSection = document.getElementById("banner");
 const TimerSection = document.getElementById("card-timer");
 
 
-
-
-
 // target main element
 const mainElement = document.getElementById("main");
+
+// total time on the clock
+let countdownClock = 60;
 
 // current question index
 let questionIndex = 0;
@@ -87,6 +87,12 @@ const questions = [
         options: ["Springfield Electrons", "Springfield Protons", "Springfield Nucleons", "Springfield Isotopes"],
         answer: "Springfield Isotopes",
     },
+
+    {
+    text: "Who does Homer work for without realizing he is a super villain?",
+    options: ["Luigi Risotto", "Lucius Sweet", "Hank Scorpio", "Rainier Wolfcastle"],
+    answer: "Springfield Isotopes",
+},
 ];
 
 // event handler function to handle click events in question section
@@ -140,6 +146,7 @@ const handleOptionClick = (event) => {
         renderQuestion();
         } 
         else {
+          
             renderGameOver ();
             // removeTimerSection ();
             // removeQuestion ();
@@ -153,39 +160,62 @@ const handleOptionClick = (event) => {
 
 
 
-// function to render timer to page
+// function to render timer to page V1
+// const renderTimer = () => {
+//     console.log("render timer");
+//        // create section
+//        const section = document.createElement("section");
+//        section.setAttribute("class", "content-section question-container");
+       
+
+//        // Create timer v1
+//        const div1 = document.createElement("div");
+//        div1.setAttribute("class", "card-timer");
+//        div1.setAttribute("display", "flex");
+
+   
+//        const div2 = document.createElement("div");
+//        div2.setAttribute("class", "timer-text");
+   
+//        const div3 = document.createElement("div");
+//        div3.setAttribute("class", "large-font timer-count");
+//        div3.setAttribute("id", "timer-count");
+//        div3.textContent = countdownClock;
+       
+//        const h3 = document.createElement("h3");
+//        h3.setAttribute("class", "large-font timer-count");
+//        h3.textContent = "seconds remaining"
+
+//        div1.append(div2, div3, h3);
+
+//        // append h2 and ul to section
+//        section.append(div1); 
+
+//        // append question section to main element
+//        mainElement.append(section); 
+
+// };  
+
+// v2
 const renderTimer = () => {
     console.log("render timer");
        // create section
-       const section = document.createElement("section");
-       section.setAttribute("class", "content-section question-container");
-       
-
-       // Create timer
-       const div1 = document.createElement("div");
-       div1.setAttribute("class", "card-timer");
-       div1.setAttribute("display", "flex");
-
-   
-       const div2 = document.createElement("div");
-       div2.setAttribute("class", "timer-text");
-   
-       const div3 = document.createElement("div");
-       div3.setAttribute("class", "large-font timer-count");
-       div3.setAttribute("id", "timer-count");
-       div3.textContent = "60"
-       
-       const h3 = document.createElement("h3");
-       h3.setAttribute("class", "large-font timer-count");
-       h3.textContent = "seconds remaining"
-
-       div1.append(div2, div3, h3);
+       const TimerSection = document.createElement("section");
+       TimerSection.setAttribute("class", "content-section question-container");
+       TimerSection.setAttribute("id", "timer-container");
+       // Create timer 
+       const timerElement = document.createElement("div");
+       timerElement.textContent = "Time Remaining" + countdownClock;
+       timerElement.setAttribute("class", "card-timer");
+       timerElement.setAttribute("class", "large-font timer-count");
+       timerElement.setAttribute("id", "clock");
+       timerElement.setAttribute("display", "flex");
 
        // append h2 and ul to section
-       section.append(div1); 
+       TimerSection.append(timerElement); 
 
        // append question section to main element
-       mainElement.append(section); 
+       mainElement.append(TimerSection); 
 
 };  
 
@@ -249,6 +279,10 @@ const renderQuestion = () => {
 
 
   const renderGameOver = () => {
+
+    document.querySelector("#clock").remove();
+    // document.getElementById("question-container").remove();
+    // const finalScore = countdownClock;
 
       // create section
       const section = document.createElement("section");
@@ -339,12 +373,16 @@ const renderQuestion = () => {
     // if answered was correct this checks if current question index is less than questions items and and add score 
     // and updates content, else loads gameOver
     const answeredCorrectly = () => {
+        countdownClock +=5;
         playerScore +=10;
         correctLog++;
         // questionIndex++;
         if (questionIndex < questions.length - 1) {
             console.log(playerScore);
             return playerScore;
+        } else if 
+            (countdownClock <= 0) {
+            clearInterval(clock);
 
      
             // outcomeDisplay.style.color = "green";
@@ -362,6 +400,7 @@ const renderQuestion = () => {
         };
     };
 
+
     // **************************TO DO **************************************
     // create a dynamically rendered game over page/submit high score form 
     // use the 2 functions renderResults() and renderForm() below
@@ -375,38 +414,40 @@ const renderQuestion = () => {
     const answeredInCorrectly = () => {
         // questionIndex++;
         // let timerCount = document.getElementById ("timer-count");
-        var timerElement = document.querySelector(".timer-count")
-        timerCount -=5;
+        // var timerElement = document.querySelector(".timer-count")
+        countdownClock -=5;
+        if (countdownClock <= 0) {
+            clearInterval(clock);
 
             // alert.style.color = "red";
             // alert.textContent = "Oops! You answered incorrectly. Progess: " + correctLog + "/" + questions.length;
         // }   
-        // else {
-        //     timeLeft = 0; 
+        // // else {
+        // //     timeLeft = 0; 
 
-        // if (timerCount <= 0) {
-            if (questionIndex === questions.length - 1) {
-            // Clears interval
-            clearInterval(timer);
-            // loseGame();
-            timeLeft = 0; 
-            // removeQuestion ();
-            // removeTimerSection ();
-            // renderResults();
-            // renderForm();
-            // renderGameOver();
-            
-            
-          } else {
-            timeLeft = 0;
-
-        if (timerCount === 0) {
-            // clears interval
-            clearInterval(timer);
-            renderGameOver();
+        // // if (timerCount <= 0) {
+        //     if (questionIndex === questions.length - 1) {
+        //     // Clears interval
+        //     clearInterval(timer);
         //     // loseGame();
+        //     timeLeft = 0; 
+        //     // removeQuestion ();
+        //     // removeTimerSection ();
+        //     // renderResults();
+        //     // renderForm();
+        //     // renderGameOver();
+            
+            
+        //   } else {
+        //     timeLeft = 0;
+
+        // if (timerCount === 0) {
+        //     // clears interval
+        //     clearInterval(timer);
+        //     renderGameOver();
+        // //     // loseGame();
           }
-        };
+        // };
           
   
     };
@@ -435,8 +476,9 @@ const removeQuestion = () => {
   
 
   // The startGame function is called when the start button is clicked
-function startTimer() {
-    var timerElement = document.querySelector(".timer-count")
+// const startTimer = setTimeout() => {
+const startTimer = () => {
+    var timerElement = document.querySelector("#clock");
     // isWin = false;
     timerCount = 30;
     // Prevents start button from being clicked when round is in progress
@@ -446,10 +488,33 @@ function startTimer() {
 //     // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
 
     // Sets timer
-    timer = setInterval(function() {
-      timerCount--;
-      timerElement.textContent = timerCount;
-    //   if (timerCount >= 0) {
+    const timerTick =  () => {
+        if (countdownClock <= 0) {
+            clearInterval(clock);
+            // const questionsContainer = document.getElementById("question-container");
+            // questionsContainer.remove();
+
+            const timerContainer = document.getElementById("timer-container");
+            timerContainer.remove();
+
+            renderGameOver();
+
+    //   timerCount--;
+    //   timerElement.textContent = timerCount;
+      // Tests if time has run out
+        //   const timer = document.getElementById("timer-count");
+        //   timer.textContent = "Time Remaining:" + timerCount;
+        // timer.remove();
+        // renderGameOver ();
+      } else {
+        countdownClock -= 1;
+        timerElement.textContent = "Time Remaining: " + countdownClock;
+    }
+};
+const clock = setInterval(timerTick, 1000);
+};
+
+
     //     // Tests if win condition is met
     //     if (isWin && timerCount > 0) {
     //       // Clears interval and stops timer
@@ -458,16 +523,16 @@ function startTimer() {
     //     }
     //   }
       
-      // Tests if time has run out
-      if (timerCount === 0) {
+      
+      
         // Clears interval
-        clearInterval(timer);
+       
         // setTimeout();
         // loseGame();
-      }
+//       }
       
-    }, 1000);
-  };
+//     }, 1000);
+//   };
 
 
 
