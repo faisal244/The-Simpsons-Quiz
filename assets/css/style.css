@@ -149,7 +149,7 @@
         rgba(var(--ash-grey-rgb), 0.7),
         rgba(var(--ash-grey-rgb), 0.7)
       ),
-      url("/images/homer-take-quiz.jpeg");
+      url("https://github.com/faisal244/The-Simpsons-Quiz/blob/main/images/homer-take-quiz.jpeg?raw=true");
 
       justify-content: center;
     background-position:  -100px;
@@ -227,7 +227,7 @@
         rgba(var(--ash-grey-rgb), 0.8)
       ),
 
-      url("images/simpsonsclassic.jpg");
+      url("https://github.com/faisal244/The-Simpsons-Quiz/blob/main/images/simpsonsclassic.jpg?raw=true");
       
     background-position: 0px 0px;
     background-repeat: repeat-x;
@@ -245,7 +245,7 @@
         rgba(var(--ash-grey-rgb), 0.8)
       ),
 
-      url("images/simpsonsclassic.jpg");
+      url("https://github.com/faisal244/The-Simpsons-Quiz/blob/main/images/simpsonsclassic.jpg?raw=true");
       
     background-position: 0px 0px;
     background-repeat: repeat-x;
