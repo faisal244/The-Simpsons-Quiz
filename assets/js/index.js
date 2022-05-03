@@ -124,7 +124,10 @@ const handleOptionClick = (event) => {
             value,
         };
 
-        if (answer.value === questions[questionIndex].answer && questionIndex <= questions.length - 1) {
+          // store score in local storage
+            storeInLS("score", answer);
+
+        if (answer.value === questions[questionIndex].answer && questionIndex <= questions.length) {
             answeredCorrectly();
             console.log("correct");
         }
@@ -134,8 +137,7 @@ const handleOptionClick = (event) => {
         }   
 	
 
-        // // store answer in local storage
-        // storeInLS("feedbackResults", answer);
+    
 
        
 
@@ -284,8 +286,9 @@ const renderQuestion = () => {
 
 
   const renderGameOver = () => {
-
+    if (countdownClock => 0 && questionIndex < questions.length - 1) {
     document.querySelector("#clock").remove();
+    
     document.getElementById("question-container").remove();
     // const finalScore = countdownClock;
 
@@ -344,13 +347,40 @@ const renderQuestion = () => {
 
   
   };
+};
   
 
 
   
-  const handleFormSubmit = () => {
-
-  }
+const handleFormSubmit = (event) => {
+    event.preventDefault();
+  
+    // get full name from input
+    const fullName = document.getElementById("full-name").value;
+  
+    // validate
+    if (fullName) {
+      // if valid then store feedbackResults in LS
+      const feedbackResults = JSON.parse(localStorage.getItem("score"));
+  
+      // build object with fullName and results
+      const result = {
+        fullName,
+        score,
+      };
+  
+      // push the results back to LS
+      storeInLS("allScores", result);
+  
+      // clear feedbackResults
+      localStorage.removeItem("score");
+  
+      // remove form
+      document.getElementById("feedback-form").remove();
+    } else {
+      alert("Please enter full name!");
+    }
+  };
   
   // function to render the results
   const renderResults = () => {
@@ -393,6 +423,7 @@ const renderQuestion = () => {
 
         } else {
             console.log(playerScore);
+            clearInterval(clock);
             countdownClock = 0
             // renderGameOver();
             // return playerScore;
@@ -502,7 +533,7 @@ const removeQuestion = () => {
 const startTimer = () => {
     var timerElement = document.querySelector("#clock");
     // isWin = false;
-    timerCount = 30;
+    // timerCount = 30;
     // Prevents start button from being clicked when round is in progress
     startButton.disabled = true;
 
@@ -558,14 +589,43 @@ const clock = setInterval(timerTick, 1000);
 //     }, 1000);
 //   };
 
-
+const initialiseLocalStorage = () => {
+    // get high scores from LS
+    const highScoresFromLS = JSON.parse(
+      localStorage.getItem("score")
+    );
+  
+    const highScoreFromLS = JSON.parse(localStorage.getItem("score"));
+  
+    if (!highScoreFromLS) {
+      // if not exist set LS to have feedbackResults as an empty array
+      localStorage.setItem("score", JSON.stringify([]));
+    }
+  
+    if (!highScoreFromLS) {
+      // if not exist set LS to have feedbackResults as an empty array
+      localStorage.setItem("allScores", JSON.stringify([]));
+    }
+  };
+  
+  const storeInLS = (key, value) => {
+    // get feedbackResults from LS
+    const arrayFromLS = JSON.parse(localStorage.getItem(key));
+  
+    // push answer in to array
+    arrayFromLS.push(value);
+  
+    // set feedbackResults in LS
+    localStorage.setItem(key, JSON.stringify(arrayFromLS));
+  };
 
 
 // declare the event handler function for start button click
 const handleStartButtonClick = () => {
   console.log("start button clicked");
-  // initialise local storage
-//   initialiseLocalStorage();
+
+//   initialise local storage
+  initialiseLocalStorage();
 
   // remove banner section
   removeBanner();
