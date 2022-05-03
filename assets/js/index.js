@@ -26,6 +26,7 @@ let questionIndex = 0;
 // Player Score variable
 let playerScore= 0;
 let correctLog = 0;
+let fullName = ""
 
 // var timerElement = document.querySelector(".timer-count");
 // var startButton = document.querySelector("#start-btn");
@@ -124,9 +125,9 @@ const handleOptionClick = (event) => {
             value,
             playerScore,
         };
-
+        // debugger
           // store score in local storage
-            storeInLS("score", answer);
+            storeInLS("score", playerScore);
 
         if (answer.value === questions[questionIndex].answer && questionIndex <= questions.length) {
             answeredCorrectly();
@@ -319,7 +320,7 @@ const handleFormSubmit = (event) => {
     event.preventDefault();
   
     // get full name from input
-    const fullName = document.getElementById("full-name").value;
+    fullName = document.getElementById("full-name").value;
   
     // validate
     if (fullName) {
@@ -327,23 +328,24 @@ const handleFormSubmit = (event) => {
       const score = JSON.parse(localStorage.getItem("score"));
   
       // build object with fullName and results
-      const result = {
-        fullName,
-        score,
-      };
-  
+    //   const result = {
+    //     fullName,
+    //     score,
+    //   };
+        // debugger
       // push the results back to LS
-      storeInLS("allScores", result);
+      storeInLS("allScores", score);
     
       const final = JSON.parse(localStorage.getItem("allScores"))
-      const finalScore = final[1].score[final[1].score.length-1].playerScore
+     
   
       // clear feedbackResults
-      localStorage.removeItem("score");
+    //   localStorage.removeItem("score");
   
       // remove form
       document.getElementById("high-score-form").remove();
     //   renderResults();
+
 
       // create section
       const section = document.createElement("section");
@@ -362,27 +364,35 @@ const handleFormSubmit = (event) => {
     
 
         // create h2
-    const hs1 = document.createElement("h2");
+        for(var i=0; i<final.length; i++){
+            debugger
+        // const finalScore = final[i+1].score[final[i+1].score.length-1].playerScore
+        // const name = final[i+1].fullName
+    let hs1 = document.createElement("h2");
     hs1.setAttribute("class", "title alert");
     hs1.textContent = ("HIGH SCORE 1");
     // hs1.textContent = JSON.parse(localStorage.getItem(allScores));
     // hs1.textContent = JSON.parse(localStorage.getItem(allScores) || [playerScore]);
     // hs1.textContent = JSON.parse(localStorage.getItem(allScores) || [playerScore]);
     // hs1.textContent = storeInLS = (allScores, playerScore);
-    hs1.textContent = result.fullName + " " + finalScore ;
+    // hs1.textContent = result.fullName + " " + finalScore ;
+    hs1.textContent = final[i].name + " " + final[i].score ;
+    section.append(h1, hs1);
+        }
 
 
 
     // storeInLS = (key, value)
 
-    const hs2 = document.createElement("h2");
-    hs2.setAttribute("class", "title alert");
+    // const hs2 = document.createElement("h2");
+    // hs2.setAttribute("class", "title alert");
+    // // hs2.textContent = ("HIGH SCORE 2");
+    // hs2.textContent = name + " " + finalScore ;
     // hs2.textContent = ("HIGH SCORE 2");
     // hs2.textContent = JSON.parse(localStorage.getItem(allScores) || [fullName]);
 
     // hs2.textContent = JSON.parse(localStorage.getItem(allScores) || [result] + "   "  + JSON.parse(localStorage.getItem(allScores) || [playerScore]));
 
-    section.append(h1, hs1, hs2);
 
   mainElement.append(section);
 
@@ -541,19 +551,28 @@ const clock = setInterval(timerTick, 1000);
 
 
 const initialiseLocalStorage = () => {
-    // get high scores from LS
-    const highScoresFromLS = JSON.parse(
-      localStorage.getItem("score")
-    );
   
     const highScoreFromLS = JSON.parse(localStorage.getItem("score"));
+    const allScoresFromLS = JSON.parse(localStorage.getItem("allScores"));
+
+    // get high scores from LS
+    // const highScoreFromLS = JSON.parse(
+    //   localStorage.getItem("score")
+    // );
+  
+  
   
     if (!highScoreFromLS) {
       // if not exist set LS to have feedbackResults as an empty array
       localStorage.setItem("score", JSON.stringify([]));
     }
+
+       // get all high scores from LS
+    //    const allScoresFromLS = JSON.parse(
+    //     localStorage.getItem("allScores")
+    //   );
   
-    if (!highScoreFromLS) {
+    if (!allScoresFromLS) {
       // if not exist set LS to have feedbackResults as an empty array
       localStorage.setItem("allScores", JSON.stringify([]));
     }
@@ -568,10 +587,15 @@ const initialiseLocalStorage = () => {
   
     // push answer in to array
     // this was just key before, i added value to troubleshoot - same with line abo
-    arrayFromLS.push(key, value);
+    // arrayFromLS.push(value);
   
     // set feedbackResults in LS
-    localStorage.setItem(key, JSON.stringify(arrayFromLS));
+    if(key === "allScores"){
+        arrayFromLS.push({name: fullName, score: value})
+        localStorage.setItem(key, JSON.stringify(arrayFromLS));
+    }else{
+        localStorage.setItem(key, JSON.stringify(value));
+    }
   };
 
 
