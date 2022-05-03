@@ -155,53 +155,12 @@ const handleOptionClick = (event) => {
         else {
            
             renderGameOver ();
-            // removeTimerSection ();
-            // removeQuestion ();
-    //     // if last question then render results and form
-    //     renderResults();
-    //     renderForm();
+
         }
     }
 };
 
 
-
-
-// function to render timer to page V1
-// const renderTimer = () => {
-//     console.log("render timer");
-//        // create section
-//        const section = document.createElement("section");
-//        section.setAttribute("class", "content-section question-container");
-       
-
-//        // Create timer v1
-//        const div1 = document.createElement("div");
-//        div1.setAttribute("class", "card-timer");
-//        div1.setAttribute("display", "flex");
-
-   
-//        const div2 = document.createElement("div");
-//        div2.setAttribute("class", "timer-text");
-   
-//        const div3 = document.createElement("div");
-//        div3.setAttribute("class", "large-font timer-count");
-//        div3.setAttribute("id", "timer-count");
-//        div3.textContent = countdownClock;
-       
-//        const h3 = document.createElement("h3");
-//        h3.setAttribute("class", "large-font timer-count");
-//        h3.textContent = "seconds remaining"
-
-//        div1.append(div2, div3, h3);
-
-//        // append h2 and ul to section
-//        section.append(div1); 
-
-//        // append question section to main element
-//        mainElement.append(section); 
-
-// };  
 
 // v2
 const renderTimer = () => {
@@ -286,7 +245,8 @@ const renderQuestion = () => {
 
 
   const renderGameOver = () => {
-    if (countdownClock => 0 && questionIndex < questions.length - 1) {
+    //   let countdownClock = countdownClock
+    // if (countdownClock => 0 && questionIndex < questions.length) {
     document.querySelector("#clock").remove();
     
     document.getElementById("question-container").remove();
@@ -296,6 +256,7 @@ const renderQuestion = () => {
       const section = document.createElement("section");
       section.setAttribute("class", "high-score-form-section title alert");
       section.setAttribute("name", "high-score-form");
+      section.setAttribute("id", "high-score-form");
 
       // create h1
       const h1 = document.createElement("h1");
@@ -347,9 +308,38 @@ const renderQuestion = () => {
 
   
   };
-};
+// };
   
+ // function to render the results
+ const renderResults = () => {
+    console.log("render results");
 
+      // create section
+      const section = document.createElement("section");
+      section.setAttribute("class", "high-score-form-section title alert");
+      section.setAttribute("name", "high-score-form");
+
+      // create h1
+      const h1 = document.createElement("h1");
+    //   h1.setAttribute("class", "question");
+      h1.textContent = ("HIGH SCORES");
+
+            // create Image
+    const img = document.createElement("img");
+    img.setAttribute("src", "./images/egghead.jpg");
+    img.setAttribute("id", "game-over-image")
+    
+
+        // create h2
+    const h2 = document.createElement("h2");
+    h2.setAttribute("class", "title alert");
+    h2.textContent = ("Submit your high score");
+
+    section.append(h1, img, h2);
+
+  mainElement.append(section);
+
+  };
 
   
 const handleFormSubmit = (event) => {
@@ -361,7 +351,7 @@ const handleFormSubmit = (event) => {
     // validate
     if (fullName) {
       // if valid then store feedbackResults in LS
-      const feedbackResults = JSON.parse(localStorage.getItem("score"));
+      const score = JSON.parse(localStorage.getItem("score"));
   
       // build object with fullName and results
       const result = {
@@ -376,33 +366,17 @@ const handleFormSubmit = (event) => {
       localStorage.removeItem("score");
   
       // remove form
-      document.getElementById("feedback-form").remove();
+      document.getElementById("high-score-form").remove();
+      renderResults();
     } else {
       alert("Please enter full name!");
     }
-  };
   
-  // function to render the results
-  const renderResults = () => {
-      console.log("render results");
-    };
+  
+ 
+};
     
-    // const renderForm = () => {
-    //     console.log("render game over screen");
-    // };
-    
-    // const removeTimerSection = () => {
-    //     console.log("remove question");
-    //     // document.getElementById("card-timer").remove();
-    //     setTimeout(function() {
-    //         document.getElementById("card-timer").style.display = "none";
-    //     // TimerSection.style.display = 'none';
-
-
-
-    //     } );
-    // };
-      
+ 
            
 
 // *******************************************
@@ -417,7 +391,7 @@ const handleFormSubmit = (event) => {
         correctLog++;
         console.log(playerScore);
         // questionIndex++;
-        if (questionIndex < questions.length - 1) {
+        if (questionIndex < questions.length) {
            
             return playerScore;
 
@@ -425,22 +399,7 @@ const handleFormSubmit = (event) => {
             console.log(playerScore);
             clearInterval(clock);
             countdownClock = 0
-            // renderGameOver();
-            // return playerScore;
-
-     
-            // outcomeDisplay.style.color = "green";
-            // outcomeDisplay.textContent = "Awesome! You answered correctly. Progess: " + correctLog + "/" + questions.length;
-        // } 
-        // } else {
-        //     timeLeft = 0;
-
-        // if (timerCount === 0) {
-        //     // clears interval
-        //     clearInterval(timer);
-        //     renderGameOver();
-        // //     // loseGame();
-        //   }
+       
         };
     };
 
@@ -456,10 +415,6 @@ const handleFormSubmit = (event) => {
     // if answered was incorrect this checks if current question index is less than questions items 
     // and updates content, else loads gameOver
     const answeredInCorrectly = () => {
-        // questionIndex++;
-        // let timerCount = document.getElementById ("timer-count");
-        // var timerElement = document.querySelector(".timer-count")
-        // let countdownClock = countdownClock;
 
         countdownClock -=5;
         if (countdownClock <= 0) {
@@ -468,48 +423,10 @@ const handleFormSubmit = (event) => {
             // removeQuestion ();
             countdownClock = 0
 
-            // renderGameOver();
-
-            // return playerScore;
-
-            // alert.style.color = "red";
-            // alert.textContent = "Oops! You answered incorrectly. Progess: " + correctLog + "/" + questions.length;
-        // }   
-        // // else {
-        // //     timeLeft = 0; 
-
-        // // if (timerCount <= 0) {
-        //     if (questionIndex === questions.length - 1) {
-        //     // Clears interval
-        //     clearInterval(timer);
-        //     // loseGame();
-        //     timeLeft = 0; 
-        //     // removeQuestion ();
-        //     // removeTimerSection ();
-        //     // renderResults();
-        //     // renderForm();
-        //     // renderGameOver();
-            
-            
-        //   } else {
-        //     timeLeft = 0;
-
-        // if (timerCount === 0) {
-        //     // clears interval
-        //     clearInterval(timer);
-        //     renderGameOver();
-        // //     // loseGame();
-          }
-        // };
-          
+          }       
   
     };
 
-
-// ****************************************************************
-
-
-//   TO DO - Function to remove the timer from the page on game completion
 
 
 
@@ -532,9 +449,6 @@ const removeQuestion = () => {
 // const startTimer = setTimeout() => {
 const startTimer = () => {
     var timerElement = document.querySelector("#clock");
-    // isWin = false;
-    // timerCount = 30;
-    // Prevents start button from being clicked when round is in progress
     startButton.disabled = true;
 
 
@@ -544,23 +458,9 @@ const startTimer = () => {
     const timerTick =  () => {
         if (countdownClock <= 0) {
             clearInterval(clock);
-            // const questionsContainer = document.getElementById("question-container");
-            // questionsContainer.remove();
 
-            // const timerContainer = document.getElementById("timer-container");
-            // timerContainer.remove();
-            // removeQuestion ();
             renderGameOver();
 
-            
-
-    //   timerCount--;
-    //   timerElement.textContent = timerCount;
-      // Tests if time has run out
-        //   const timer = document.getElementById("timer-count");
-        //   timer.textContent = "Time Remaining:" + timerCount;
-        // timer.remove();
-        // renderGameOver ();
       } else {
         countdownClock -= 1;
         timerElement.textContent = "Time Remaining: " + countdownClock;
@@ -570,24 +470,7 @@ const clock = setInterval(timerTick, 1000);
 };
 
 
-    //     // Tests if win condition is met
-    //     if (isWin && timerCount > 0) {
-    //       // Clears interval and stops timer
-    //       clearInterval(timer);
-    //       winGame();
-    //     }
-    //   }
-      
-      
-      
-        // Clears interval
-       
-        // setTimeout();
-        // loseGame();
-//       }
-      
-//     }, 1000);
-//   };
+
 
 const initialiseLocalStorage = () => {
     // get high scores from LS
