@@ -1,7 +1,4 @@
 // // global declarations
-// // each question gets 10 seconds on the timer
-// let timerValue = 10 * questions.length;
-// let quizComplete = false;
 
 
 // target start button
@@ -27,12 +24,6 @@ let questionIndex = 0;
 let playerScore= 0;
 let correctLog = 0;
 let fullName = ""
-
-// var timerElement = document.querySelector(".timer-count");
-// var startButton = document.querySelector("#start-btn");
-
-// all options
-// const options = ["Yes", "No", "Maybe"];
 
 // all questions array
 const questions = [
@@ -102,7 +93,6 @@ const questions = [
 // event handler function to handle click events in question section
 // this function decides what happens next
 const handleOptionClick = (event) => {
-    console.log("clicked somewhere in question section");
   
     // get current target
     const currentTarget = event.currentTarget;
@@ -125,7 +115,7 @@ const handleOptionClick = (event) => {
             value,
             playerScore,
         };
-        // debugger
+       
           // store score in local storage
             storeInLS("score", playerScore);
 
@@ -139,9 +129,6 @@ const handleOptionClick = (event) => {
         }   
 	
 
-    
-
-       
 
         if (questionIndex < questions.length - 1) {
         // go to next question if not the last question
@@ -158,15 +145,15 @@ const handleOptionClick = (event) => {
            
             renderGameOver ();
 
-        }
-    }
+        };
+    };
 };
 
 
 
-// v2
+// Function to render the timer to the page
 const renderTimer = () => {
-    console.log("render timer");
+
        // create section
        const TimerSection = document.createElement("section");
        TimerSection.setAttribute("class", "content-section timer-container");
@@ -190,7 +177,6 @@ const renderTimer = () => {
 
 // function to render question to page
 const renderQuestion = () => {
-    console.log("render question");
   
     // get current question
     const currentQuestion = questions[questionIndex];
@@ -247,12 +233,11 @@ const renderQuestion = () => {
 
 
   const renderGameOver = () => {
-    //   let countdownClock = countdownClock
-    // if (countdownClock => 0 && questionIndex < questions.length) {
+
     document.querySelector("#clock").remove();
     
     document.getElementById("question-container").remove();
-    // const finalScore = countdownClock;
+ 
 
       // create section
       const section = document.createElement("section");
@@ -262,10 +247,9 @@ const renderQuestion = () => {
 
       // create h1
       const h1 = document.createElement("h1");
-    //   h1.setAttribute("class", "question");
-      h1.textContent = ("GAME OVER");
+      h1.textContent = ("GAME OVER");  
 
-            // create Image
+    // create Image
     const img = document.createElement("img");
     img.setAttribute("src", "./images/egghead.jpg");
     img.setAttribute("id", "game-over-image")
@@ -308,14 +292,12 @@ const renderQuestion = () => {
   // add event listener for form submission
   form.addEventListener("submit", handleFormSubmit);
 
+};
+
   
-  };
-// };
-  
+
  // function to render the results
 
-
-  
 const handleFormSubmit = (event) => {
     event.preventDefault();
   
@@ -326,25 +308,18 @@ const handleFormSubmit = (event) => {
     if (fullName) {
       // if valid then store feedbackResults in LS
       const score = JSON.parse(localStorage.getItem("score"));
-  
-      // build object with fullName and results
-    //   const result = {
-    //     fullName,
-    //     score,
-    //   };
-        // debugger
+
       // push the results back to LS
       storeInLS("allScores", score);
     
       const final = JSON.parse(localStorage.getItem("allScores"))
      
   
-      // clear feedbackResults
-    //   localStorage.removeItem("score");
-  
       // remove form
       document.getElementById("high-score-form").remove();
-    //   renderResults();
+
+
+    //   render High Scores
 
 
       // create section
@@ -357,118 +332,41 @@ const handleFormSubmit = (event) => {
     //   h1.setAttribute("class", "question");
       h1.textContent = ("HIGH SCORES");
       section.append(h1);
-    //         // create Image
-    // const img = document.createElement("img");
-    // img.setAttribute("src", "./images/egghead.jpg");
-    // img.setAttribute("id", "game-over-image")
     
 
         // create h2
-        for(var i=0; i<final.length; i++){
-            // debugger
-        // const finalScore = final[i+1].score[final[i+1].score.length-1].playerScore
-        // const name = final[i+1].fullName
+        for(var i=0; i<final.length; i++) {
     let hs1 = document.createElement("h2");
     hs1.setAttribute("class", "title alert");
-    // hs1.textContent = ("HIGH SCORE 1");
-    // hs1.textContent = JSON.parse(localStorage.getItem(allScores));
-    // hs1.textContent = JSON.parse(localStorage.getItem(allScores) || [playerScore]);
-    // hs1.textContent = JSON.parse(localStorage.getItem(allScores) || [playerScore]);
-    // hs1.textContent = storeInLS = (allScores, playerScore);
-    // hs1.textContent = result.fullName + " " + finalScore ;
     hs1.textContent = final[i].name + " " + final[i].score ;
     section.append(hs1);
-        }
 
-
-
-    // storeInLS = (key, value)
-
-    // const hs2 = document.createElement("h2");
-    // hs2.setAttribute("class", "title alert");
-    // // hs2.textContent = ("HIGH SCORE 2");
-    // hs2.textContent = name + " " + finalScore ;
-    // hs2.textContent = ("HIGH SCORE 2");
-    // hs2.textContent = JSON.parse(localStorage.getItem(allScores) || [fullName]);
-
-    // hs2.textContent = JSON.parse(localStorage.getItem(allScores) || [result] + "   "  + JSON.parse(localStorage.getItem(allScores) || [playerScore]));
+        };
 
 
   mainElement.append(section);
 
 
-    //   maybe need to return result?
-    //   return result;
     } else {
       alert("Please enter full name!");
     }
   
 };
     
-// const renderResults = () => {
-//     console.log("render results");
-//     // var fullName = JSON.parse(localStorage.getItem("fullName"));
-//     var allScores = JSON.parse(localStorage.getItem("allScores"));
-//     // const localStorageData = JSON.parse(localStorage.getItem(allScores, result));
-
-//     // result = handleFormSubmit ().result 
-
-//       // create section
-//       const section = document.createElement("section");
-//       section.setAttribute("class", "high-score-form-section title alert");
-//       section.setAttribute("name", "high-score-form");
-
-//       // create h1
-//       const h1 = document.createElement("h1");
-//     //   h1.setAttribute("class", "question");
-//       h1.textContent = ("HIGH SCORES");
-
-//     //         // create Image
-//     // const img = document.createElement("img");
-//     // img.setAttribute("src", "./images/egghead.jpg");
-//     // img.setAttribute("id", "game-over-image")
-    
-
-//         // create h2
-//     const hs1 = document.createElement("h2");
-//     hs1.setAttribute("class", "title alert");
-//     hs1.textContent = ("HIGH SCORE 1");
-//     // hs1.textContent = JSON.parse(localStorage.getItem(allScores));
-//     // hs1.textContent = JSON.parse(localStorage.getItem(allScores) || [playerScore]);
-//     // hs1.textContent = JSON.parse(localStorage.getItem(allScores) || [playerScore]);
-//     // hs1.textContent = storeInLS = (allScores, playerScore);
-//     hs1.textContent = handleFormSubmit() ;
 
 
-
-//     // storeInLS = (key, value)
-
-//     const hs2 = document.createElement("h2");
-//     hs2.setAttribute("class", "title alert");
-//     // hs2.textContent = ("HIGH SCORE 2");
-//     // hs2.textContent = JSON.parse(localStorage.getItem(allScores) || [fullName]);
-
-//     // hs2.textContent = JSON.parse(localStorage.getItem(allScores) || [result] + "   "  + JSON.parse(localStorage.getItem(allScores) || [playerScore]));
-
-//     section.append(h1, hs1, hs2);
-
-//   mainElement.append(section);
-
-//   };
            
 
 // *******************************************
 
 
-    // if answered was correct this checks if current question index is less than questions items and and add score 
-    // and updates content, else loads gameOver
+    // Function that checks if answered was correct and if current question index is less than questions items and updates score 
+   
     const answeredCorrectly = () => {
-        //  let countdownClock = countdownClock;
         countdownClock +=5;
         playerScore +=10;
         correctLog++;
-        console.log(playerScore);
-        // questionIndex++;
+        // console.log(playerScore);
         if (questionIndex < questions.length) {
            
             return playerScore;
@@ -482,16 +380,9 @@ const handleFormSubmit = (event) => {
     };
 
 
-    // **************************TO DO **************************************
-    // create a dynamically rendered game over page/submit high score form 
-    // use the 2 functions renderResults() and renderForm() below
-    // Create a remove timer function that will fire when the renderResults and renderForm functions are triggered - any scenerio where the game ends 
-    // set up local storage get and set functions for the high scores section
-    // consider seconds on timer = 10 seconds per question in the questions array, so the time on the clock can be dynamic instead of hardcoded
 
+    // Function that checks if answered was incorrect and if current question index is less than questions items 
 
-    // if answered was incorrect this checks if current question index is less than questions items 
-    // and updates content, else loads gameOver
     const answeredInCorrectly = () => {
 
         countdownClock -=5;
@@ -501,8 +392,7 @@ const handleFormSubmit = (event) => {
             // removeQuestion ();
             countdownClock = 0
 
-          }       
-  
+          };       
     };
 
 
@@ -510,13 +400,14 @@ const handleFormSubmit = (event) => {
 
   // function to remove banner from page
 const removeBanner = () => {
-    console.log("remove banner");
     bannerSection.remove();
   };
 
+
+
   // function to remove question section from page
 const removeQuestion = () => {
-    console.log("remove question");
+    // console.log("remove question");
 
     document.getElementById("question-container").remove();
   };
@@ -524,15 +415,10 @@ const removeQuestion = () => {
   
 
   // The startGame function is called when the start button is clicked
-// const startTimer = setTimeout() => {
+
 const startTimer = () => {
     var timerElement = document.querySelector("#clock");
     startButton.disabled = true;
-
-
-//     // The setTimer function starts and stops the timer and triggers winGame() and loseGame()
-
-    // Sets timer
     const timerTick =  () => {
         if (countdownClock <= 0) {
             clearInterval(clock);
@@ -548,29 +434,19 @@ const clock = setInterval(timerTick, 1000);
 };
 
 
-
+// Initialise Local Storage
 
 const initialiseLocalStorage = () => {
   
     const highScoreFromLS = JSON.parse(localStorage.getItem("score"));
     const allScoresFromLS = JSON.parse(localStorage.getItem("allScores"));
-
-    // get high scores from LS
-    // const highScoreFromLS = JSON.parse(
-    //   localStorage.getItem("score")
-    // );
-  
   
   
     if (!highScoreFromLS) {
-      // if not exist set LS to have feedbackResults as an empty array
-      localStorage.setItem("score", JSON.stringify([]));
-    }
 
-       // get all high scores from LS
-    //    const allScoresFromLS = JSON.parse(
-    //     localStorage.getItem("allScores")
-    //   );
+      localStorage.setItem("score", JSON.stringify([]));
+    };
+
   
     if (!allScoresFromLS) {
       // if not exist set LS to have feedbackResults as an empty array
@@ -581,40 +457,36 @@ const initialiseLocalStorage = () => {
 
   
   let storeInLS = (key, value) => {
-    // get feedbackResults from LS
-       // this was just key before, i added value to troubleshoot 
+
     const arrayFromLS = JSON.parse(localStorage.getItem(key, value));
   
-    // push answer in to array
-    // this was just key before, i added value to troubleshoot - same with line abo
-    // arrayFromLS.push(value);
   
-    // set feedbackResults in LS
+    // set scores for high scores table in LS
     if(key === "allScores"){
         arrayFromLS.push({name: fullName, score: value})
         localStorage.setItem(key, JSON.stringify(arrayFromLS));
     }else{
         localStorage.setItem(key, JSON.stringify(value));
-    }
+    };
   };
 
 
-// declare the event handler function for start button click
+    // declare the event handler function for start button click
 const handleStartButtonClick = () => {
-  console.log("start button clicked");
 
-//   initialise local storage
+    //   initialise local storage
   initialiseLocalStorage();
 
-  // remove banner section
+    // remove banner section
   removeBanner();
 
+    // render timer section
   renderTimer ();
 
-  // render question
+    // render question
   renderQuestion();
 
-//   Starts the timer
+    //   Starts the timer
   startTimer();
 };
 
@@ -622,112 +494,3 @@ const handleStartButtonClick = () => {
 
   // Attach event listener to start button to call startGame function on click
 startButton.addEventListener("click", handleStartButtonClick);
-
-
-// ****************************************************************
-// pseudocode and notes:
-
-// // when start quiz button is pressed, set question index [0]
-
-// // question object {
-// //     title []
-// //     answers []
-// //     correct answer : "string"
-// // }
-
-
-// const onload = () => {
-//     // initialise local storage
-//     // check if high scores exist in local Storage
-//     // if flase then set high scores to empty in LS
-// };
-
-// const removeStartSection = () => {};
-
-// const startTimer = () => {
-//     // declare function to execute every 1second 
-//     const countdown = () => {
-//         // decrement timer value
-//         // if quizComplete is true, then stop timer
-//         // check if timer reaches 0
-//         // if true, game over (game over needs its own function to remove question block and timer, and render a gameover screen/section)
-//         // edge case of 5 second penalty when you have less than 5 seconds left on the clock, need one extra if else statement to cover this 
-//     };
-//     // set interval of 1000ms (1s)
-// };
-
-// // this is called whenever the user clicks on an answer
-// const validateAnswer = () => {
-//     // get answer clicked from users
-//     // get the correct answer for the question
-    
-//     // compare the 2 answers 
-//     // if correct then go to next question
-//     // and if incorrect, subtract 5 seconds from timer value, 
-//     //  // if i decide not do an extra div in the question secion for messages, i can ignore the next 4 points for this function
-//     // if incorrect, call a function for rendering error alert with message and status
-//     // if correct, call a function for rendering success alert with message and status
-//     // set a timeout for 500ms and then go to next question
-//     // if question is last question - set quizComplete to true and then render form 
-//     // if question is not last question, increment the question index and then render next question
-//     // then go to next question
-
-// };
-
-// const handleFormSubmit = () => {
-//     // get the value from input 
-//     // check if empty then render error alert with message and staus
-//     // if not empty then create the score object and render
-//     {
-//         fullName: "bob smith",
-//         score: 25,
-//     }
-//     // push score object to JS
-//     // render quizCompleteSection
-
-// };
-
-// const renderTimerSection = () => {
-//     // use html as guide and build in JS
-//     // append section to main
-// };
-
-// const renderQuestionSection = () => {
-//     // use HTML as guide and build in JS
-//     // append section to main 
-//     // add click event listener on #question-section
-// };
-
-
-// const renderGameOver = () => {};
-
-// const renderAlert = (message, status) => {
-//     // use HTML as a guide and build in JS
-//     // append div to #question-section
-// };
-
-// const renderForm = () => {
-//     // use HTML as a guide and build in JS
-//     // append section to main 
-//     // add submit event handler to form 
-// };
-
-// const renderQuizCompleteSection = () => {}
-
-// // event listeners 
-// // add document on load event listener
-// // add start button click event listener  which listens for clicks on the start button, fires off a start game function
-
-
-// const startQuiz = () => {
-//     // remove start section
-//     // start timer
-//     // render timer section
-//     // render question section
-// };
-
-// // high scores page:
-// // read from local storage
-// // get the array 
-// // go through each item, 
-// // render scores from score objects;
