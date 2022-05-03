@@ -356,7 +356,7 @@ const handleFormSubmit = (event) => {
       const h1 = document.createElement("h1");
     //   h1.setAttribute("class", "question");
       h1.textContent = ("HIGH SCORES");
-
+      section.append(h1);
     //         // create Image
     // const img = document.createElement("img");
     // img.setAttribute("src", "./images/egghead.jpg");
@@ -365,19 +365,19 @@ const handleFormSubmit = (event) => {
 
         // create h2
         for(var i=0; i<final.length; i++){
-            debugger
+            // debugger
         // const finalScore = final[i+1].score[final[i+1].score.length-1].playerScore
         // const name = final[i+1].fullName
     let hs1 = document.createElement("h2");
     hs1.setAttribute("class", "title alert");
-    hs1.textContent = ("HIGH SCORE 1");
+    // hs1.textContent = ("HIGH SCORE 1");
     // hs1.textContent = JSON.parse(localStorage.getItem(allScores));
     // hs1.textContent = JSON.parse(localStorage.getItem(allScores) || [playerScore]);
     // hs1.textContent = JSON.parse(localStorage.getItem(allScores) || [playerScore]);
     // hs1.textContent = storeInLS = (allScores, playerScore);
     // hs1.textContent = result.fullName + " " + finalScore ;
     hs1.textContent = final[i].name + " " + final[i].score ;
-    section.append(h1, hs1);
+    section.append(hs1);
         }
 
 
