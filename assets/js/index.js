@@ -334,6 +334,9 @@ const handleFormSubmit = (event) => {
   
       // push the results back to LS
       storeInLS("allScores", result);
+    
+      const final = JSON.parse(localStorage.getItem("allScores"))
+      const finalScore = final[1].score[final[1].score.length-1].playerScore
   
       // clear feedbackResults
       localStorage.removeItem("score");
@@ -366,7 +369,7 @@ const handleFormSubmit = (event) => {
     // hs1.textContent = JSON.parse(localStorage.getItem(allScores) || [playerScore]);
     // hs1.textContent = JSON.parse(localStorage.getItem(allScores) || [playerScore]);
     // hs1.textContent = storeInLS = (allScores, playerScore);
-    hs1.textContent = result.fullName;
+    hs1.textContent = result.fullName + " " + finalScore ;
 
 
 
