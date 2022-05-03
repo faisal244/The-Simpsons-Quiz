@@ -7,7 +7,6 @@
     --maya-blue-rgb: 112, 209, 254; 
     --ash-grey: #e2e2e2;
     --ash-grey-rgb: 226, 226, 226;
-
     --outer-space: #424F46;
     --outer-space-rgb: 66, 79, 70;
   }
@@ -18,7 +17,6 @@
 * {
     box-sizing: border-box;
     font-family: 'Homer Simpson Revised', sans-serif;
-    /* either black or this midnight outer space for the text colour */
     color: var(--outer-space);
     
 }
@@ -35,8 +33,6 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    /* font-family: "Source Sans Pro", sans-serif; */
-    /* background-color: var(--outer-space); */
     background-color: var(--light-french-beige);
 
   }
@@ -55,7 +51,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    /* position: fixed; top */
+
   }
   
   .nav-link-logo {
@@ -66,7 +62,7 @@
   .nav-link-logo:hover {
     box-shadow: 0 0 1rem 0.5rem var(--maya-blue);
     background-color: var(--maya-blue);
-    /* text-decoration: none; */
+
   }
   
   .logo-img {
@@ -81,7 +77,6 @@
     text-transform: uppercase;
     color: var(--outer-space);
     padding-bottom: 0.5rem;
-    /* background-color: black; */
 
   }
   
@@ -92,6 +87,8 @@
   }
   
   /* end of header styles */
+
+
   
   /* start of footer styles */
   
@@ -135,33 +132,25 @@
       flex-direction: column;
       justify-content: center;
       margin: 0 10rem;
-      /* height: 50%; */
-      
-      
-    /* position: relative; */
+
   }
   
-  /* content section styles */
   
   .content-section {
-      /* height: 500px; */
-      /* height: 100%;
-      width: 100%; */
-      /* width: 1100px;; */
 
     letter-spacing: 0.6rem;
     padding: 2rem 1rem;
     text-align: center;
     color: var(--outer-space);
     box-shadow: 0rem 0rem 0.7rem 0.7rem rgba(var(--ash-grey-rgb), 0.3);
-    /* position: relative; */
+
     background-image: linear-gradient(
         to right,
         rgba(var(--ash-grey-rgb), 0.7),
         rgba(var(--ash-grey-rgb), 0.7)
       ),
       url("/images/homer-take-quiz.jpeg");
-      /* width: 600px; */
+
       justify-content: center;
     background-position:  -100px;
     background-repeat: repeat-x;
@@ -197,7 +186,7 @@
     color: var(--outer-space);
   }
   
-  /* background outer space looks good on the button hover here */
+
   .btn:hover {
     cursor: pointer;
     background-color: var(--maya-blue);
@@ -237,8 +226,8 @@
         rgba(var(--ash-grey-rgb), 0.8),
         rgba(var(--ash-grey-rgb), 0.8)
       ),
-      /* url("/images/simpsons-take-quiz-dinner.jpeg"); */
-      url("/images/simpsonsclassic.jpg");
+
+      url("images/simpsonsclassic.jpg");
       
     background-position: 0px 0px;
     background-repeat: repeat-x;
@@ -247,7 +236,6 @@
 
 
   .timer-container {
-    /* height: auto;   */
     margin:1rem;
     padding: 0;
     background: transparent;
@@ -256,8 +244,8 @@
         rgba(var(--ash-grey-rgb), 0.8),
         rgba(var(--ash-grey-rgb), 0.8)
       ),
-      /* url("/images/simpsons-take-quiz-dinner.jpeg"); */
-      url("/images/simpsonsclassic.jpg");
+
+      url("images/simpsonsclassic.jpg");
       
     background-position: 0px 0px;
     background-repeat: repeat-x;
@@ -265,9 +253,6 @@
   
   .question-container .question {
     background-color: rgba(var(--light-french-beige), 1);
-    /* color: var(--mid) */
-    /* margin-top: 10rem; */
-    /* margin-bottom: 0rem; */
     font-size: 3rem;
     font-weight: bold; 
   }
@@ -335,10 +320,10 @@
     flex-wrap: wrap;
   }
 
-  /* .large-font {
+  .large-font {
     font-size: 3.5em;
     text-align:center;
-  } */
+  }
   .alert {
     background-color: var(--maya-blue);
     margin: 1rem 0;

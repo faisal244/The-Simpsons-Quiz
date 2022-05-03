@@ -21,7 +21,7 @@ let countdownClock = 30;
 let questionIndex = 0;
 
 // Player Score variable
-let playerScore= 0;
+let playerScore= 10;
 let correctLog = 0;
 let fullName = ""
 
@@ -121,14 +121,13 @@ const handleOptionClick = (event) => {
 
         if (answer.value === questions[questionIndex].answer && questionIndex <= questions.length) {
             answeredCorrectly();
-            console.log("correct");
+
         }
         else {
             answeredInCorrectly();
-            console.log("incorrect");
+
         }   
 	
-
 
         if (questionIndex < questions.length - 1) {
         // go to next question if not the last question
@@ -366,13 +365,13 @@ const handleFormSubmit = (event) => {
         countdownClock +=5;
         playerScore +=10;
         correctLog++;
-        // console.log(playerScore);
+       
         if (questionIndex < questions.length) {
            
             return playerScore;
 
         } else {
-            console.log(playerScore);
+       
             clearInterval(clock);
             countdownClock = 0
        
