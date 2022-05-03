@@ -122,6 +122,7 @@ const handleOptionClick = (event) => {
         const answer = {
             question,
             value,
+            playerScore,
         };
 
           // store score in local storage
@@ -311,35 +312,7 @@ const renderQuestion = () => {
 // };
   
  // function to render the results
- const renderResults = () => {
-    console.log("render results");
 
-      // create section
-      const section = document.createElement("section");
-      section.setAttribute("class", "high-score-form-section title alert");
-      section.setAttribute("name", "high-score-form");
-
-      // create h1
-      const h1 = document.createElement("h1");
-    //   h1.setAttribute("class", "question");
-      h1.textContent = ("HIGH SCORES");
-
-            // create Image
-    const img = document.createElement("img");
-    img.setAttribute("src", "./images/egghead.jpg");
-    img.setAttribute("id", "game-over-image")
-    
-
-        // create h2
-    const h2 = document.createElement("h2");
-    h2.setAttribute("class", "title alert");
-    h2.textContent = ("Submit your high score");
-
-    section.append(h1, img, h2);
-
-  mainElement.append(section);
-
-  };
 
   
 const handleFormSubmit = (event) => {
@@ -367,16 +340,108 @@ const handleFormSubmit = (event) => {
   
       // remove form
       document.getElementById("high-score-form").remove();
-      renderResults();
+    //   renderResults();
+
+      // create section
+      const section = document.createElement("section");
+      section.setAttribute("class", "high-score-form-section title alert");
+      section.setAttribute("name", "high-score-form");
+
+      // create h1
+      const h1 = document.createElement("h1");
+    //   h1.setAttribute("class", "question");
+      h1.textContent = ("HIGH SCORES");
+
+    //         // create Image
+    // const img = document.createElement("img");
+    // img.setAttribute("src", "./images/egghead.jpg");
+    // img.setAttribute("id", "game-over-image")
+    
+
+        // create h2
+    const hs1 = document.createElement("h2");
+    hs1.setAttribute("class", "title alert");
+    hs1.textContent = ("HIGH SCORE 1");
+    // hs1.textContent = JSON.parse(localStorage.getItem(allScores));
+    // hs1.textContent = JSON.parse(localStorage.getItem(allScores) || [playerScore]);
+    // hs1.textContent = JSON.parse(localStorage.getItem(allScores) || [playerScore]);
+    // hs1.textContent = storeInLS = (allScores, playerScore);
+    hs1.textContent = result.fullName;
+
+
+
+    // storeInLS = (key, value)
+
+    const hs2 = document.createElement("h2");
+    hs2.setAttribute("class", "title alert");
+    // hs2.textContent = ("HIGH SCORE 2");
+    // hs2.textContent = JSON.parse(localStorage.getItem(allScores) || [fullName]);
+
+    // hs2.textContent = JSON.parse(localStorage.getItem(allScores) || [result] + "   "  + JSON.parse(localStorage.getItem(allScores) || [playerScore]));
+
+    section.append(h1, hs1, hs2);
+
+  mainElement.append(section);
+
+
+    //   maybe need to return result?
+    //   return result;
     } else {
       alert("Please enter full name!");
     }
   
-  
- 
 };
     
- 
+// const renderResults = () => {
+//     console.log("render results");
+//     // var fullName = JSON.parse(localStorage.getItem("fullName"));
+//     var allScores = JSON.parse(localStorage.getItem("allScores"));
+//     // const localStorageData = JSON.parse(localStorage.getItem(allScores, result));
+
+//     // result = handleFormSubmit ().result 
+
+//       // create section
+//       const section = document.createElement("section");
+//       section.setAttribute("class", "high-score-form-section title alert");
+//       section.setAttribute("name", "high-score-form");
+
+//       // create h1
+//       const h1 = document.createElement("h1");
+//     //   h1.setAttribute("class", "question");
+//       h1.textContent = ("HIGH SCORES");
+
+//     //         // create Image
+//     // const img = document.createElement("img");
+//     // img.setAttribute("src", "./images/egghead.jpg");
+//     // img.setAttribute("id", "game-over-image")
+    
+
+//         // create h2
+//     const hs1 = document.createElement("h2");
+//     hs1.setAttribute("class", "title alert");
+//     hs1.textContent = ("HIGH SCORE 1");
+//     // hs1.textContent = JSON.parse(localStorage.getItem(allScores));
+//     // hs1.textContent = JSON.parse(localStorage.getItem(allScores) || [playerScore]);
+//     // hs1.textContent = JSON.parse(localStorage.getItem(allScores) || [playerScore]);
+//     // hs1.textContent = storeInLS = (allScores, playerScore);
+//     hs1.textContent = handleFormSubmit() ;
+
+
+
+//     // storeInLS = (key, value)
+
+//     const hs2 = document.createElement("h2");
+//     hs2.setAttribute("class", "title alert");
+//     // hs2.textContent = ("HIGH SCORE 2");
+//     // hs2.textContent = JSON.parse(localStorage.getItem(allScores) || [fullName]);
+
+//     // hs2.textContent = JSON.parse(localStorage.getItem(allScores) || [result] + "   "  + JSON.parse(localStorage.getItem(allScores) || [playerScore]));
+
+//     section.append(h1, hs1, hs2);
+
+//   mainElement.append(section);
+
+//   };
            
 
 // *******************************************
@@ -490,13 +555,17 @@ const initialiseLocalStorage = () => {
       localStorage.setItem("allScores", JSON.stringify([]));
     }
   };
+
+
   
-  const storeInLS = (key, value) => {
+  let storeInLS = (key, value) => {
     // get feedbackResults from LS
-    const arrayFromLS = JSON.parse(localStorage.getItem(key));
+       // this was just key before, i added value to troubleshoot 
+    const arrayFromLS = JSON.parse(localStorage.getItem(key, value));
   
     // push answer in to array
-    arrayFromLS.push(value);
+    // this was just key before, i added value to troubleshoot - same with line abo
+    arrayFromLS.push(key, value);
   
     // set feedbackResults in LS
     localStorage.setItem(key, JSON.stringify(arrayFromLS));
