@@ -354,12 +354,9 @@ const handleFormSubmit = (event) => {
     
 
 
-           
-
-// *******************************************
 
 
-    // Function that checks if answered was correct and if current question index is less than questions items and updates score 
+// Function that checks if answered was correct and if current question index is less than questions items and updates score 
    
     const answeredCorrectly = () => {
         countdownClock +=5;
