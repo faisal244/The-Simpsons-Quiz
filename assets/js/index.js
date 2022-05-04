@@ -15,7 +15,7 @@ questionContainer = document.getElementById("question-container")
 const mainElement = document.getElementById("main");
 
 // total time on the clock
-let countdownClock = 30;
+let countdownClock = 60;
 
 // current question index
 let questionIndex = 0;
