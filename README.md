@@ -1,6 +1,11 @@
-# 04 The Simpsons Quiz
+# The Simpsons Quiz
+
 
 I was tasked with building a timed coding quiz with multiple-choice questions, built entirely from scratch using HTML, CSS and Vanilla JavaScript. This app runs in the browser and features dynamically updated content powered by JavaScript code that i have written. As i was allowed to base this quiz on a subject of my choosing, naturally i chose to base this on arguably the greatest TV show of all time - The Simpsons.
+
+![](images/homer-take-quiz.jpeg)
+
+
 
 
 ## User Story
@@ -44,6 +49,7 @@ The following animation demonstrates the application functionality:
 
 Below is an overview of the approach i took when working on the code and underlying JavaScript logic for this project in order to meet the University of Birmingham acceptance criteria:
 
+
 ## JavaScript 
 
 *  Created variables to target the start button, homepage banner section, the main HTML element, and timer element
@@ -69,7 +75,6 @@ Created more validation logic for the handleOptionClick () function, which liste
 * Created a high score page to render after user submits their name at the end of the game
 
 * created separate highscore.html and highscores.js files, so when a user clicks on the high scores link in the top navigation, a high score table is dynamically generated and populates itself with player name and score data stored in local storage
-
 
 
 
