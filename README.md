@@ -58,7 +58,7 @@ Below is an overview of the approach i took when working on the code and underly
 
 * Created a render question function, which gets the current question by using an empty question index array i declared, then dynamically creates elements to match the html structure and css classes and ID's i defined earlier
 
-Created more validation logic for the handleOptionClick () function, which listens for clicks to the question container, checks if they are a click on a list item, then grabs the data-value field that gets written with the answer option and stores it in an answer object as a question/answer pair in local storage
+* Created more validation logic for the handleOptionClick () function, which listens for clicks to the question container, checks if they are a click on a list item, then grabs the data-value field that gets written with the answer option and stores it in an answer object as a question/answer pair in local storage
 
 * Created a function that removes the homepage banner section from the page when the user clicks the start button
 
